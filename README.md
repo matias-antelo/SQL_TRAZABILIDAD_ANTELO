@@ -15,7 +15,7 @@
 
 <h2>Introducción</H2>
 
-<p align="justify">El presente proyecto consiste en el diseño e implementación de una base de datos destinada a la gestión de cepas microbiológicas dentro de un laboratorio. La solución contempla la trazabilidad completa de las cepas desde su adquisición, etapas de conservación y uso en la rutina de trabajo. Este sistema asegura el registro y trazabilidad desde la adquisición hasta la destruccion final, facilitando su control de calidad para una auditoría. </p>
+<p align="justify">El presente proyecto consiste en el diseño e implementación de una base de datos destinada a la gestión de cepas microbiológicas dentro de un laboratorio. La solución contempla la trazabilidad completa de las cepas desde su adquisición, etapas de conservación y uso en la rutina de trabajo. Este sistema asegura el registro y trazabilidad desde la adquisición hasta la destrucción final, facilitando su control de calidad para una auditoría.  </p>
 
 <h2>Objetivos</h2>
 
@@ -23,33 +23,19 @@
 
 <li align="justify"> Posibilitar la consulta histórica y control de las unidades en stock.
 
-<h2>Situación Problematica</h2>
+<h2>Situación problemática</h2>
 
-<p>
-En los laboratorios microbiológicos es común trabajar con diversas cepas para control de calidad, validaciones, ensayos de eficacia o calibración. La gestión manual mediante planillas de papel o archivos dispersos presenta múltiples desventajas:
+<p align="justify">
+En los laboratorios microbiológicos se trabaja con gran cantidad de cepas para control de calidad, ensayos de rutina y control de medios de cultivo. Actualmente se encuentra el laboratorio registrando todo de manera manual con planillas de papel en varios registros distintos que presenta dificultades al momento de una auditoria. Por otro lado, los registros en papel con la necesidad normativa se conservar los registros por 8 años obligan a destinar áreas destinadas al guardado de estos documentos lo que podría implicar riesgo de pérdida o deterioro de las mismas con el tiempo.
+La implementación de esta base de datos soluciona estos problemas ya que no será necesario un área para el acopio de estos documentos, tener un sistema que facilita la trazabilidad rápidamente y la posibilidad de tener la información de mayor cantidad de años. 
 
-Riesgo de pérdida o duplicación de datos.
-
-Imposibilidad de trazabilidad eficiente.
-
-Dificultad en el control de vencimientos y resultados históricos.
-
-Baja integridad y validación de la información registrada.
-
-La implementación de esta base de datos soluciona esas brechas al centralizar, estructurar y validar los datos en un sistema robusto, fácilmente escalable e integrable con otros sistemas. 
 </p>
 
 <h2>Modelo de Negocios</h2>
 
-<p> La solución fue diseñada pensando en laboratorios de microbiología pertenecientes a industrias alimentarias, farmacéuticas o de cosméticos, donde el uso de cepas controladas es parte del sistema de calidad. Estos laboratorios deben:
-
-Cumplir con normativas de trazabilidad y documentación.
-
-Registrar el historial de uso de cada cepa.
-
-Auditar el proceso completo en caso de desviaciones.
-
-La organización puede ser tanto un laboratorio interno de una empresa como un laboratorio externo que brinda servicios a terceros. Este sistema digital permite mejorar eficiencia, asegurar cumplimiento normativo y reducir errores en la documentación.</p>
+<p align="justify"> A raíz de los problemas mencionados y al no contar con soluciones informáticas disponibles en el mercado se diseñó la siguiente base de datos pensando en laboratorios de microbiología donde el uso de cepas controladas es parte de la rutina diaria y mandatorio en el sistema de calidad. 
+Dicha propuesta no solo sirve para control de stock, sino que también te permite demostrar la trazabilidad para cumplir con las normativas de los organismos oficiales como ANMAT, SENASA, INAL, entre otros.
+</p>
 
 <h2>Listado de Tablas</h2>
 
