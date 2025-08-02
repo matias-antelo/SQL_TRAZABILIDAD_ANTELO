@@ -4,9 +4,9 @@
 
 - [Introducción](#Introducción)
 - [Objetivos](#Objetivos)
-- [Situación Problemática](#Situación Problematica)
-- [Modelo de Negocios](#Modelo de Negocios)
-- [Listado de Tablas](#Listado de Tablas)
+- [Situación Problemática](#Situación-Problematica)
+- [Modelo de Negocios](#Modelo-de-Negocios)
+- [Listado de Tablas](#Listado-de-Tablas)
 
 
 <h1>Introducción</H1>
