@@ -43,93 +43,90 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 <li>Campos:</li>
 
-MOO_ID → INT, Clave primaria, autoincremental.
+MOO_ID (INT, auto_incremental, NOT NULL) Clave primaria.
 
-NOMBRE → VARCHAR(100), Único, nombre de la cepa.
+NOMBRE (VARCHAR(100), Único, NOT NULL) Nombre de la cepa.
 
 <li>Relaciones:</li>
 
-Se relaciona con STOCK_CEPAS mediante MOO_ID.
+MOO_ID Usado como clave foránea en: STOCK_CEPAS.
 
 <ul>2. ANALISTA_FIRMA </ul>
 <li>Descripción: Registro de los analistas autorizados para intervenir sobre las cepas.</li>
 
 <li>Campos: </li>
 
-ID_ANALISTA → INT, Clave primaria, autoincremental.
+ID_ANALISTA (INT, auto_incremental, NOT NULL) Clave primaria.
 
-NOMBRE → VARCHAR(100), Único.
+NOMBRE (VARCHAR(100), Único, NOT NULL) Iniciales de los analistas.
 
 <li>Relaciones: </li>
 
-Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
 <ul> 3. OBSERVAC_RESERVA</ul>
-<li>Descripción: Observaciones posibles durante la reserva de cepas.</li>
+<li>Descripción: Observaciones posibles luego de la reactivacion de cepa.</li>
 
 <li>Campos:</li>
 
-ID_OBSERVACION → INT, Clave primaria.
+ID_OBSERVACION (INT, AUTO_INCREMENT, NOT NULL) Clave primaria.
 
-DESCRIPCION → VARCHAR(255), Único.
+DESCRIPCION (VARCHAR(255), Único, NOT NULL). Descripcion de posibles causas predeterminadas.
 
 <li>Relaciones:</li>
 
-Referenciada en CEPA_RESERVA mediante ID_OBSERVACION.
+ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
+
+<ul> 4. PRUEBAS_CEPAS </ul>
+<li>Descripción: Contiene los distintos tipos de pruebas bioquímicas posibles.</li>
+
+<li>Campos:</li>
+
+ID_PRUEBAS (INT, AUTO_INCREMENT, NOT NULL) Clave primaria.
+
+TIPOS (VARCHAR(200) NOT NULL UNIQUE) tipos de puebas de calidad que existen.
+
+<li>Relaciones:</li>
+
+ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+
+<ul>5. OBSERVACION_TRABAJO</ul>
+<li>Descripción: Observaciones predefinidas al uso o baja de cepas.</li>
+
+<li>Campos:</li>
+
+ID_OBSERVACIONTRABAJO (INT, NOT NULL, AUTO_INCREMENT) Clave primaria.
+
+DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE) descripcion de aceptacion o no.
+
+<li>Relaciones:</li>
+
+ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+
+<ul>6. STOCK_CEPAS</ul>
+<li>Descripción: Tabla principal que registra la incorporación y datos principales de una cepa en stock.</li>
+
+<li>Campos:</li>
+
+ID_STOCK (INT, AUTO_INCREMENT) Clave primaria.
+
+FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION (DATE, NOT NULL)
+
+ID_PRUEBAS (INT) Clave foránea a PRUEBAS_CEPAS.
+
+RESULTADO, OBSERVACIONES (TEXT)
+
+ID_ANALISTA (INT) Clave foránea a ANALISTA_FIRMA.
+
+MOO_ID (INT) Clave foránea a CEPAS.
+
+NUMERO_ID (VARCHAR(50)).
+
+<li>Relaciones:</li>
+
+ID_STOCK Usado como clave foránea en: CEPA_RESERVA.
 
 ---
-
-4. PRUEBAS_CEPAS
-Descripción: Contiene los distintos tipos de pruebas bioquímicas posibles.
-
-Campos:
-
-ID_PRUEBAS → INT, Clave primaria.
-
-TIPOS → VARCHAR(200), Único.
-
-Relaciones:
-
-Clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
-
-5. OBSERVACION_TRABAJO
-Descripción: Observaciones predefinidas aplicables al uso o baja de cepas.
-
-Campos:
-
-ID_OBSERVACIONTRABAJO → INT, Clave primaria.
-
-DESCRIPCION → VARCHAR(200), Único.
-
-Relaciones:
-
-Clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
-
-6. STOCK_CEPAS
-Descripción: Tabla central que registra la incorporación y datos principales de una cepa en stock.
-
-Campos:
-
-ID_STOCK → INT, Clave primaria.
-
-FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION → DATE.
-
-ID_PRUEBAS → INT, Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO, OBSERVACIONES → TEXT.
-
-ID_ANALISTA → INT, Clave foránea a ANALISTA_FIRMA.
-
-MOO_ID → INT, Clave foránea a CEPAS.
-
-NUMERO_ID → VARCHAR(50).
-
-Relaciones:
-
-Claves foráneas a: ANALISTA_FIRMA, PRUEBAS_CEPAS, CEPAS.
-
-Es referenciada por: CEPA_RESERVA.
-
 7. CEPA_RESERVA
 Descripción: Tabla que registra las alícuotas reservadas desde el stock.
 
