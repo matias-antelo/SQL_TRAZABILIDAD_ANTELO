@@ -134,3 +134,124 @@ FECHA_BAJA DATE NOT NULL,
     FOREIGN KEY (ID_PRUEBAS) REFERENCES PRUEBAS_CEPAS(ID_PRUEBAS),
     FOREIGN KEY (ID_TRABAJO4) REFERENCES CEPA_TRABAJO4(ID_TRABAJO4)
 );
+
+-- insercion de datos en CEPAS 
+INSERT INTO CEPAS (NOMBRE)
+VALUES
+    ('Salmonella'),
+    ('E. coli'),
+    ('Listeria monocytogenes'),
+    ('Pseudomonas aeruginosa'),
+    ('Staphylococcus aureus');
+
+-- insercion de datos en ANALISTA_FIRMA 
+INSERT INTO ANALISTA_FIRMA (NOMBRE)
+VALUES
+    ('MA'),
+    ('GR'),
+    ('JM'),
+    ('IB');
+
+-- insercion de datos en OBSERVAC_RESERVA
+INSERT INTO OBSERVAC_RESERVA (DESCRIPCION)
+VALUES
+    ('Sin crecimiento'),
+    ('Descarte'),
+    ('Contaminación');
+
+-- insercion de datos en PRUEBAS_CEPAS
+INSERT INTO PRUEBAS_CEPAS (TIPOS)
+VALUES
+    ('Pruebas bioquímicas'),
+    ('API WEB'),
+    ('PCR'),
+    ('MALDI-TOF'),
+    ('Prueba confirmatoria');
+
+-- insercion de datos en OBSERVACION_TRABAJO
+INSERT INTO OBSERVACION_TRABAJO (DESCRIPCION)
+VALUES
+    ('Sin crecimiento'),
+    ('Descarte por contaminación'),
+    ('Descarte'),
+    ('Ok');
+
+-- insercion de datos en STOCK_CEPAS
+INSERT INTO STOCK_CEPAS (ID_STOCK, FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION, ID_PRUEBAS, RESULTADO, OBSERVACIONES, ID_ANALISTA, MOO_ID)
+VALUES
+    ('1-1', '2024-06-15', '2025-06-15', '2025-02-01', 1, 'TSI positivos, urea negativo, LIA positivo', 'Reconstitución según protocolo estándar', 1, 1),
+    ('1-2', '2024-07-10', '2025-07-10', NULL, NULL, NULL, NULL, NULL, 1),
+    ('2-1', '2024-03-05', '2025-03-05', '2025-01-20', 3, 'PCR positivo para genes de virulencia eaeA y stx2', 'Confirmación genética por PCR multiplex', 2, 2),
+    ('2-2', '2024-04-22', '2025-04-22', NULL, NULL, NULL, NULL, NULL, 2),
+    ('2-3', '2024-05-13', '2025-05-13', NULL, NULL, NULL, NULL,  NULL, 2),
+    ('3-1', '2024-08-01', '2025-08-01', '2025-01-10', 5, 'CAMP positivo, movilidad a 25°C, hemólisis beta', 'Conservación en medio Fraser antes de siembra', 3, 3),
+    ('3-2', '2024-08-03', '2025-08-03', NULL, NULL, NULL, NULL, NULL, 3),
+    ('3-3', '2024-08-05', '2025-08-05', NULL, NULL, NULL, NULL, NULL, 3),
+    ('4-1', '2024-02-18', '2025-02-18', '2025-01-15', 2, 'API identificó presencia de oxidasa y pigmento piocianina', 'Coloración azulada del medio Cetrimida', 4, 4),
+    ('5-1', '2024-10-10', '2025-10-10', '2025-05-25', 4, 'MALDI-TOF confirmó S. aureus con Score >2.0', 'Confirmación rápida en menos de 5 min', 1, 5),
+    ('5-2', '2024-11-12', '2025-11-12', NULL, NULL, NULL, NULL, NULL, 5);
+
+-- insercion de datos en CEPA_RESERVA
+INSERT INTO CEPA_RESERVA (ID_STOCK, NUMERO_ALICUOTA, FECHA_RECONSTITUCION, ID_OBSERVACION, ID_ANALISTA) 
+VALUES
+  ('1-1', '1', '2025-02-01', 1, 1),
+  ('1-1', '2', NULL, NULL, NULL),
+  ('1-1', '3', NULL, NULL, NULL),
+  ('1-1', '4', NULL, NULL, NULL),
+  ('1-1', '5', NULL, NULL, NULL),
+  ('2-1', '1', '2025-01-20', 2, 2),
+  ('2-1', '2', NULL, NULL, NULL),
+  ('2-1', '3', NULL, NULL, NULL),
+  ('2-1', '4', NULL, NULL, NULL),
+  ('2-1', '5', NULL, NULL, NULL),
+  ('3-1', '1', '2025-01-10', 3, 3),
+  ('3-1', '2', NULL, NULL, NULL),
+  ('3-1', '3', NULL, NULL, NULL),
+  ('3-1', '4', NULL, NULL, NULL),
+  ('3-1', '5', NULL, NULL, NULL),
+  ('4-1', '1', '2025-01-15', 1, 4),
+  ('4-1', '2', NULL, NULL, NULL),
+  ('4-1', '3', NULL, NULL, NULL),
+  ('4-1', '4', NULL, NULL, NULL),
+  ('4-1', '5', NULL, NULL, NULL),
+  ('5-1', '1', '2025-05-25', 3, 1),
+  ('5-1', '2', NULL, NULL, NULL),
+  ('5-1', '3', NULL, NULL, NULL),
+  ('5-1', '4', NULL, NULL, NULL),
+  ('5-1', '5', NULL, NULL, NULL);
+
+-- insercion de datos en CEPA_TRABAJO2
+INSERT INTO CEPA_TRABAJO2 (ID_RESERVA, FECHA_ACTIVACION, ID_PRUEBAS, RESULTADO, ID_OBSERVACIONTRABAJO, ID_ANALISTA, FECHA_BAJA)
+VALUES
+    (1, '2025-02-15', 1, 'TSI y urea positivos', 4, 1, '2025-12-31'),
+    (6, '2025-02-10', 3, 'PCR positivo para eaeA', 4, 2, '2025-11-30'),
+    (11, '2025-02-12', 5, 'CAMP positivo y hemólisis beta', 4, 3, '2025-12-15'),
+    (16, '2025-02-08', 2, 'API oxidasa positiva', 4, 4, '2025-11-30'),
+    (21, '2025-06-01', 4, 'MALDI-TOF confirmación S. aureus', 4, 1, '2025-12-31');
+
+-- insercion de datos en CEPA_TRABAJO3
+INSERT INTO CEPA_TRABAJO3 (ID_TRABAJO2, FECHA_ACTIVACION, ID_PRUEBAS, RESULTADO, ID_OBSERVACIONTRABAJO, ID_ANALISTA, FECHA_BAJA)
+VALUES
+    (1, '2025-03-01', 2, 'Resultados compatibles con API', 4, 1, '2025-12-31'),
+    (2, '2025-03-03', 3, 'PCR confirmatoria positiva', 4, 2, '2025-11-30'),
+    (3, '2025-03-05', 1, 'TSI y ureasa positivos', 4, 3, '2025-12-15'),
+    (4, '2025-03-07', 5, 'Prueba confirmatoria OK', 4, 4, '2025-11-30'),
+    (5, '2025-07-01', 4, 'MALDI-TOF correcto', 4, 1, '2025-12-31');
+
+-- insercion de datos en CEPA_TRABAJO4
+INSERT INTO CEPA_TRABAJO4 (ID_TRABAJO3, FECHA_ACTIVACION, ID_PRUEBAS, RESULTADO, ID_OBSERVACIONTRABAJO, ID_ANALISTA, FECHA_BAJA) 
+VALUES
+(1, '2025-03-01', 2, 'API positivo para oxidasa y catalasa', 4, 1, '2025-12-01'),
+(2, '2025-03-03', 3, 'PCR positivo para eaeA y stx1', 4, 2, '2025-12-15'),
+(3, '2025-03-05', 1, 'Pruebas bioquímicas: TSI, LIA, Urea', 4, 3, '2025-12-20'),
+(4, '2025-03-07', 5, 'Confirmación por test CAMP y catalasa', 4, 4, '2025-12-31'),
+(5, '2025-03-10', 4, 'MALDI-TOF: Confirmación de especie', 4, 1, '2025-12-31');
+
+-- insercion de datos en CEPA_TRABAJO5
+INSERT INTO CEPA_TRABAJO5 (ID_TRABAJO4, FECHA_ACTIVACION, ID_PRUEBAS, RESULTADO, ID_OBSERVACIONTRABAJO, ID_ANALISTA, FECHA_BAJA) 
+VALUES
+(1, '2025-04-01', 1, 'TSI positivo, LIA positivo, urea negativo', 4, 1, '2025-12-31'),
+(2, '2025-04-03', 3, 'PCR confirmación presencia de genes ipaH', 4, 2, '2025-12-20'),
+(3, '2025-04-05', 2, 'API confirmación por oxidasa y glucosa', 4, 3, '2025-12-30'),
+(4, '2025-04-08', 5, 'Confirmación final, hemólisis tipo β', 4, 4, '2025-12-31'),
+(5, '2025-04-10', 4, 'MALDI-TOF compatible con Salmonella spp.', 4, 1, '2025-12-31');
