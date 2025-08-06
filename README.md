@@ -38,7 +38,7 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 </p>
 
 <h2>Listado de Tablas</h2>
-<ul>1. CEPAS</ul>
+<ul>1. TABLA CEPAS</ul>
 <li>Descripción: Tabla base que contiene los microorganismos disponibles.</li>
 
 <li>Campos:</li>
@@ -51,7 +51,7 @@ NOMBRE (VARCHAR(100), Único, NOT NULL) Nombre de la cepa.
 
 MOO_ID Usado como clave foránea en: STOCK_CEPAS.
 
-<ul>2. ANALISTA_FIRMA </ul>
+<ul>2. TABLA ANALISTA_FIRMA </ul>
 <li>Descripción: Registro de los analistas autorizados para intervenir sobre las cepas.</li>
 
 <li>Campos: </li>
@@ -64,7 +64,7 @@ NOMBRE (VARCHAR(100), Único, NOT NULL) Iniciales de los analistas.
 
 ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
-<ul> 3. OBSERVAC_RESERVA</ul>
+<ul> 3. TABLA OBSERVAC_RESERVA</ul>
 <li>Descripción: Observaciones posibles luego de la reactivacion de cepa.</li>
 
 <li>Campos:</li>
@@ -77,7 +77,7 @@ DESCRIPCION (VARCHAR(255), Único, NOT NULL). Descripcion de posibles causas pre
 
 ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
 
-<ul> 4. PRUEBAS_CEPAS </ul>
+<ul> 4. TABLA PRUEBAS_CEPAS </ul>
 <li>Descripción: Contiene los distintos tipos de pruebas bioquímicas posibles.</li>
 
 <li>Campos:</li>
@@ -90,7 +90,7 @@ TIPOS (VARCHAR(200) NOT NULL UNIQUE) tipos de puebas de calidad que existen.
 
 ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
-<ul>5. OBSERVACION_TRABAJO</ul>
+<ul>5. TABLA OBSERVACION_TRABAJO</ul>
 <li>Descripción: Observaciones predefinidas al uso o baja de cepas.</li>
 
 <li>Campos:</li>
@@ -103,7 +103,7 @@ DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE) descripcion de aceptacion o no.
 
 ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
-<ul>6. STOCK_CEPAS</ul>
+<ul>6. TABLA STOCK_CEPAS</ul>
 <li>Descripción: Tabla principal que registra la incorporación y datos principales de una cepa en stock.</li>
 
 <li>Campos:</li>
