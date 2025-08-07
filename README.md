@@ -170,28 +170,74 @@ ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
 ID_TRABAJO2 Usado como clave foránea en: CEPA_TRABAJO3.
 
----
+<ul>9. CEPA_TRABAJO3</ul>
+<li>Descripción: tercer pasaje de la cepa, derivado de la cepa de trabajo 2.</li>
 
-9. CEPA_TRABAJO3
-Descripción: Tercer ciclo de uso de una cepa, derivado de trabajo 2.
+<li>Campos:</li>
 
-Campos similares a CEPA_TRABAJO2
+ID_TRABAJO3 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT) Clave primaria
 
-Relación:
+ID_TRABAJO2 (INT) Clave foránea a CEPA_TRABAJO2
 
-Clave foránea a CEPA_TRABAJO2.
+FECHA_ACTIVACION (DATE, NOT NULL)
 
-10. CEPA_TRABAJO4
-Descripción: Cuarto ciclo de uso de una cepa, derivado de trabajo 3.
+ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
 
-Relación:
+RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
 
-Clave foránea a CEPA_TRABAJO3.
+ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
 
-11. CEPA_TRABAJO5
-Descripción: Quinto y último ciclo previsto para uso de cepas, derivado de trabajo 4.
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
-Relación:
+FECHA_BAJA (DATE, NOT NULL). Fecha que se termina la vida util de este pasaje
 
-Clave foránea a CEPA_TRABAJO4.
+<li>Relación (CEPA_TRABAJO2 1:1 CEPA_TRABAJO3; CEPA_TRABAJO3 1:1 CEPA_TRABAJO4; CEPA_TRABAJO3 n:1 ANALISTA_FIRMA; CEPA_TRABAJO3 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO3 n:1 PRUEBAS_CEPAS):</li>
 
+ID_TRABAJO3 Usado como clave foránea en: CEPA_TRABAJO4.
+
+<ul>10. CEPA_TRABAJO4</ul>
+<li>Descripción: cuarto pasaje de la cepa, derivado de la cepa de trabajo 3.</li>
+
+<li>Campos:</li>
+
+ID_TRABAJO4 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). CLave primaria
+
+ID_TRABAJO3 (INT) Clave foránea a CEPA_TRABAJO3
+
+FECHA_ACTIVACION (DATE, NOT NULL). 
+
+ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
+
+RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
+
+ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+FECHA_BAJA (DATE, NOT NULL). Fecha de baja final de este pasaje.
+
+<li>Relación (CEPA_TRABAJO3 1:1 CEPA_TRABAJO4; CEPA_TRABAJO4 1:1 CEPA_TRABAJO5; CEPA_TRABAJO4 n:1 ANALISTA_FIRMA; CEPA_TRABAJO4 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO4 n:1 PRUEBAS_CEPAS):</li>
+
+ID_TRABAJO4 Usado como clave foránea en: CEPA_TRABAJO5.
+
+<ul>11. CEPA_TRABAJO5</ul>
+<li>Descripción: Quinto y último pasaje para uso de cepas, derivado de trabajo 4.</li>
+
+<li>Campos:</li>
+ID_TRABAJO5 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). Clave primaria
+
+ID_TRABAJO4 (INT). Clave foránea a CEPA_TRABAJO4
+
+FECHA_ACTIVACION (DATE, NOT NULL).
+
+ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
+
+RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
+
+ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+FECHA_BAJA (DATE, NOT NULL). Fecha de baja final
+
+<li>Relación (CEPA_TRABAJO4 1:1 CEPA_TRABAJO5; CEPA_TRABAJO5 n:1 ANALISTA_FIRMA; CEPA_TRABAJO5 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO5 n:1 PRUEBAS_CEPAS):</li>
