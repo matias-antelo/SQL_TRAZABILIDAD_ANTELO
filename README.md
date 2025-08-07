@@ -43,11 +43,11 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 <li>Campos:</li>
 
-MOO_ID (INT, auto_incremental, NOT NULL) Clave primaria.
+MOO_ID (INT, auto_incremental, PRIMARY KEY). Clave primaria.
 
-NOMBRE (VARCHAR(100), Único, NOT NULL) Nombre de la cepa.
+NOMBRE (VARCHAR(100), UNIQUE, NOT NULL). Nombre de la cepa.
 
-<li>Relaciones:</li>
+<li>Relaciones (CEPAS 1:n SOTCK_CEPAS):</li>
 
 MOO_ID Usado como clave foránea en: STOCK_CEPAS.
 
@@ -56,11 +56,11 @@ MOO_ID Usado como clave foránea en: STOCK_CEPAS.
 
 <li>Campos: </li>
 
-ID_ANALISTA (INT, auto_incremental, NOT NULL) Clave primaria.
+ID_ANALISTA (INT, auto_incremental, PRIMARY KEY). Clave primaria.
 
-NOMBRE (VARCHAR(100), Único, NOT NULL) Iniciales de los analistas.
+NOMBRE (VARCHAR(100), UNIQUE, NOT NULL). Iniciales de los analistas.
 
-<li>Relaciones: </li>
+<li>Relaciones (ANALISTA_FIRMA 1:n con STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5): </li>
 
 ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
@@ -69,11 +69,11 @@ ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJ
 
 <li>Campos:</li>
 
-ID_OBSERVACION (INT, AUTO_INCREMENT, NOT NULL) Clave primaria.
+ID_OBSERVACION (INT, AUTO_INCREMENT, NOT NULL, PRIMARY KEY). Clave primaria
 
-DESCRIPCION (VARCHAR(255), Único, NOT NULL). Descripcion de posibles causas predeterminadas.
+DESCRIPCION (VARCHAR(255), UNIQUE, NOT NULL). Descripcion de posibles causas predeterminadas
 
-<li>Relaciones:</li>
+<li>Relaciones (OBSERVAC_RESERVA 1:n CEPA_RESERVA):</li>
 
 ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
 
@@ -82,11 +82,11 @@ ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
 
 <li>Campos:</li>
 
-ID_PRUEBAS (INT, AUTO_INCREMENT, NOT NULL) Clave primaria.
+ID_PRUEBAS (INT, AUTO_INCREMENT, NOT NULL, PRIMARY KEY). Clave primaria.
 
-TIPOS (VARCHAR(200) NOT NULL UNIQUE) tipos de puebas de calidad que existen.
+TIPOS (VARCHAR(200), NOT NULL, UNIQUE). tipos de puebas de calidad que existen.
 
-<li>Relaciones:</li>
+<li>Relaciones (PRUEBAS_CEPAS 1:n STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5):</li>
 
 ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
@@ -95,11 +95,11 @@ ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJ
 
 <li>Campos:</li>
 
-ID_OBSERVACIONTRABAJO (INT, NOT NULL, AUTO_INCREMENT) Clave primaria.
+ID_OBSERVACIONTRABAJO (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY). Clave primaria.
 
-DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE) descripcion de aceptacion o no.
+DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE). descripcion de aceptacion o no.
 
-<li>Relaciones:</li>
+<li>Relaciones (OBSERVACION_TRABAJO 1:n CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5):</li>
 
 ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
 
@@ -108,7 +108,7 @@ ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3
 
 <li>Campos:</li>
 
-ID_STOCK (INT, AUTO_INCREMENT) Clave primaria.
+ID_STOCK (VARCHAR(50), PRIMARY KEY, NOT NULL). Clave primaria.
 
 FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION (DATE, NOT NULL)
 
@@ -120,58 +120,57 @@ ID_ANALISTA (INT) Clave foránea a ANALISTA_FIRMA.
 
 MOO_ID (INT) Clave foránea a CEPAS.
 
-NUMERO_ID (VARCHAR(50)).
-
-<li>Relaciones:</li>
+<li>Relaciones (STOCK_CEPAS 1:n CEPA_RESERVA; STOCK_CEPAS n:1 ANALISTA_FIRMA; STOCK_CEPAS n:1 CEPAS; STOCK_CEPAS n:1 PRUEBAS_CEPAS):</li>
 
 ID_STOCK Usado como clave foránea en: CEPA_RESERVA.
 
+
+<ul>7. CEPA_RESERVA</ul>
+<li>Descripción: Tabla que registra las alícuotas reservadas desde el stock.</li>
+
+<li>Campos:</li>
+
+ID_RESERVA (INT, AUTO_INCREMENT, PRIMARY KEY). Clave primaria
+
+ID_STOCK (VARCHAR(50), NOT NULL). Clave foránea a STOCK_CEPAS.
+
+NUMERO_ALICUOTA (VARCHAR (10), NOT NULL). Cantidad de alicuotas generadas por cada cepa de reserva
+
+FECHA_RECONSTITUCION (DATE).
+
+ID_OBSERVACION (INT). Clave foránea a OBSERVAC_RESERVA.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO2; CEPA_RESERVA n:1 ANALISTA_FIRMA; CEPA_RESERVA n:1 OBSERVAC_RESERVA; CEPA_RESERVA n:1 STOCK_CEPAS):</li>
+
+ID_RESERVA Usado como clave foránea en: CEPA_TRABAJO2.
+
+
+<ul>8. CEPA_TRABAJO2</ul>
+<li>Descripción: Segunda etapa de uso de una cepa, derivada de reserva.</li>
+
+<li>Campos:</li>
+
+ID_TRABAJO2 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). Clave primaria
+
+ID_RESERVA (INT). Clave foránea a CEPA_RESERVA.
+
+FECHA_ACTIVACION, FECHA_BAJA (DATE, NOT NULL). 
+
+ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
+
+RESULTADO (TEXT).
+
+ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO2; CEPA_TRABAJO3 1:1 CEPA_TRABAJO2; CEPA_TRABAJO2 n:1 ANALISTA_FIRMA; CEPA_TRABAJO2 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO2 n:1 PRUEBAS_CEPAS):</li>
+
+ID_TRABAJO2 Usado como clave foránea en: CEPA_TRABAJO3.
+
 ---
-7. CEPA_RESERVA
-Descripción: Tabla que registra las alícuotas reservadas desde el stock.
-
-Campos:
-
-ID_RESERVA → INT, Clave primaria.
-
-ID_STOCK → INT, Clave foránea a STOCK_CEPAS.
-
-NUMERO_ALICUOTA → VARCHAR(10).
-
-FECHA_RECONSTITUCION → DATE.
-
-ID_OBSERVACION → INT, Clave foránea a OBSERVAC_RESERVA.
-
-ID_ANALISTA → INT, Clave foránea a ANALISTA_FIRMA.
-
-Relaciones:
-
-Relacionada con: STOCK_CEPAS, OBSERVAC_RESERVA, ANALISTA_FIRMA.
-
-Es referenciada por: CEPA_TRABAJO2.
-
-8. CEPA_TRABAJO2
-Descripción: Segunda etapa de uso de una cepa, derivada de reserva.
-
-Campos:
-
-ID_TRABAJO2 → INT, Clave primaria.
-
-ID_RESERVA → INT, Clave foránea a CEPA_RESERVA.
-
-FECHA_ACTIVACION, FECHA_BAJA → DATE.
-
-ID_PRUEBAS → INT, Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO → TEXT.
-
-ID_OBSERVACIONTRABAJO → INT, Clave foránea a OBSERVACION_TRABAJO.
-
-ID_ANALISTA → INT, Clave foránea a ANALISTA_FIRMA.
-
-Relaciones:
-
-Es referenciada por: CEPA_TRABAJO3.
 
 9. CEPA_TRABAJO3
 Descripción: Tercer ciclo de uso de una cepa, derivado de trabajo 2.
