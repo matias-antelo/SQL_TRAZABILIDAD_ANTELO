@@ -178,67 +178,67 @@ ID_TRABAJO_ORIGEN Usado como clave foránea recursiva en: CEPA_TRABAJO.
 
 <h2>Listado de Vistas</h2>
 
-Vista "CEPAS_RECONSTITUIDAS"
+<ul>VISTA "CEPAS_RECONSTITUIDAS"</ul>
 
-Descripción:
-Esta vista muestra todas las cepas que fueron reconstituídas en stock, incluyendo la cepa, numeracion, fechas de recepción y vencimiento, fecha de reconstitución, resultado, observaciones y analista responsable.
+<li>Descripción:
+Esta vista muestra todas las cepas que fueron reconstituídas en stock. Dicha tabla incluye el dato de la cepa, su numeracion, fechas de recepción y vencimiento, fecha de reconstitución, resultado, observaciones y analista responsable.</li>
 
-Objetivo:
-El objetivo de esta vista es facilitar la identificación y control de las cepas que ya han sido reconstituídas.
+<li>Objetivo:
+El objetivo de esta vista es facilitar la identificación y control de las cepas que ya han sido reconstituídas.</li>
 
-Tablas que la componen:
+<li>Tablas que la componen:
 
 Tabla "STOCK_CEPAS": Contiene información principal de cada cepa en stock, incluyendo fechas, resultados, observaciones y referencias a analistas y pruebas.
 
 Tabla "CEPAS": Contiene los nombres de las cepas. Se utiliza para obtener el nombre asociado a cada registro de stock.
 
-Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables de la reconstitución.
+Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables de la reconstitución.</li>
 
---
 
-Vista "CEPAS_VENCIDAS_SIN_USAR"
+<ul>VISTA "CEPAS_VENCIDAS_SIN_USAR"</ul>
 
-Descripción:
-Esta vista muestra todas las cepas que se encuentran vencidas y que no han sido reconstituídas, incluyendo información de la cepa, número de lote, fechas y analista responsable.
+<li>Descripción:
+Esta vista muestra todas las cepas que se encuentran vencidas y que no han sido reconstituídas, incluyendo información de la cepa (nombre), numeración de lote, fechas (VTO, reconstitución, recepción), observaciones y analista responsable.</li>
 
-Objetivo:
-Identificar las cepas vencidas sin uso para poder tomar decisiones sobre su disposición o eliminación según normativa.
+<li>Objetivo:
+Identificar las cepas vencidas sin uso para poder tomar decisiones sobre su disposición o eliminación.</li>
 
-Tablas que la componen:
+<li>Tablas que la componen:
 
-Tabla "STOCK_CEPAS": Contiene la información de fechas y resultados de las cepas.
+Tabla "STOCK_CEPAS": Contiene la información de fechas, numeracion, observaciones y resultados de las cepas.
 
 Tabla "CEPAS": Permite obtener el nombre de la cepa asociada.
 
-Tabla "ANALISTA_FIRMA": Permite obtener el nombre del analista responsable.
+Tabla "ANALISTA_FIRMA": Permite obtener el nombre del analista responsable.</li>
 
-Vista "CEPAS_NO_VENCIDAS_SIN_USAR"
 
-Descripción:
-Esta vista muestra las cepas que aún no han vencido y que no han sido reconstituídas, con información del lote, fechas y analista responsable.
+<ul>VISTA "CEPAS_NO_VENCIDAS_SIN_USAR"</ul>
 
-Objetivo:
-Permitir el control de stock de cepas disponibles para uso, asegurando que las unidades válidas no se desperdicien y se mantenga trazabilidad.
+<li>Descripción:
+Esta vista muestra las cepas que aún no han vencido y que no han sido reconstituídas, con información del lote (numeración), resultado, observaciones, fechas y analista responsable.</li>
 
-Tablas que la componen:
+<li>Objetivo:
+Permitir el control de stock de cepas disponibles para uso, asegurando que las unidades válidas no se desperdicien.</li>
 
-Tabla "STOCK_CEPAS": Información de stock, fechas, resultados y observaciones.
+<li>Tablas que la componen:
+
+Tabla "STOCK_CEPAS": numeración, fechas, resultados y observaciones.
 
 Tabla "CEPAS": Nombre de la cepa asociada.
 
-Tabla "ANALISTA_FIRMA": Nombre del analista responsable.
+Tabla "ANALISTA_FIRMA": Nombre del analista responsable.</li>
 
-Vista "CEPAS_RESERVA_RECONSTITUIDAS"
+<ul>VISTA "CEPAS_RESERVA_RECONSTITUIDAS"</ul>
 
-Descripción:
-Esta vista muestra las alícuotas de reserva que han sido reconstituídas, incluyendo el número de alícuota, fecha de reconstitución, observación, analista responsable, nombre de la cepa y número de lote.
+<li>Descripción:
+Esta vista muestra las alícuotas de reserva que han sido reconstituídas, incluyendo el número de alícuota, fecha de reconstitución, observación, analista responsable, nombre de la cepa y numeración de lote.</li>
 
-Objetivo:
-Permitir el seguimiento de las alícuotas que han sido reconstituídas, garantizando trazabilidad y control de calidad.
+<li>Objetivo:
+Permitir el seguimiento de las alícuotas que han sido reconstituídas, garantizando el seguimiento y control de calidad.</li>
 
-Tablas que la componen:
+<li>Tablas que la componen:
 
-Tabla "CEPA_RESERVA": Contiene información de cada alícuota de reserva, fechas y referencias a observaciones y analistas.
+Tabla "CEPA_RESERVA": Contiene información de cada alícuota de reserva reconstituida, fechas y referencias a observaciones y analistas.
 
 Tabla "STOCK_CEPAS": Permite obtener la numeración del lote de la cepa asociada.
 
@@ -246,48 +246,46 @@ Tabla "CEPAS": Permite obtener el nombre de la cepa.
 
 Tabla "OBSERVACION_RESERVA": Contiene las descripciones de las observaciones asociadas a la reconstitución.
 
-Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables.
+Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables.</li>
 
-Vista "CEPAS_RESERVA_NO_RECONSTITUIDAS"
+<ul>VISTA "CEPAS_RESERVA_NO_RECONSTITUIDAS"</ul>
 
-Descripción:
-Esta vista muestra las alícuotas de reserva que aún no han sido reconstituídas, con información del número de alícuota, nombre de la cepa y número de lote.
+<li>Descripción:
+Esta vista muestra las alícuotas de reserva que aún no han sido reconstituídas, con información del número de alícuota, nombre de la cepa, fecha y número de lote.</li>
 
-Objetivo:
-Identificar alícuotas de reserva pendientes de reconstitución para su planificación y seguimiento.
+<li>Objetivo:
+Identificar alícuotas de reserva pendientes de reconstitución para tener un orden en el uso y seguimiento.</li>
 
-Tablas que la componen:
+<li>Tablas que la componen:
 
 Tabla "CEPA_RESERVA": Información de las alícuotas pendientes.
 
 Tabla "STOCK_CEPAS": Permite obtener la numeración del lote.
 
-Tabla "CEPAS": Permite obtener el nombre de la cepa.
+Tabla "CEPAS": Permite obtener el nombre de la cepa.</li>
 
-Tabla "OBSERVACION_RESERVA": Referencia a posibles observaciones (aunque no se muestran en la selección).
+<ul>VISTA "TRAZABILIDAD_CEPA_TRABAJO"</ul>
 
-Tabla "ANALISTA_FIRMA": Referencia a analistas responsables (aunque no se muestran en la selección).
+<li>Descripción:
+Esta vista permite ver la trazabilidad completa de las cepas desde reserva hasta los niveles 2, 3 y 4 de trabajo, incluyendo fechas de activación, fecha de baja, tipo de prueba, resultados de pruebas, observaciones y analistas responsables en cada nivel.</li>
 
-Vista "TRAZABILIDAD_CEPA_TRABAJO"
+<li>Objetivo:
+Facilitar el seguimiento y auditoría de la trazabilidad de las cepas en sus diferentes etapas de uso dentro del laboratorio.</li>
 
-Descripción:
-Esta vista permite ver la trazabilidad completa de las cepas desde reserva hasta los niveles 2, 3 y 4 de trabajo, incluyendo fechas de activación, fecha de baja, resultados de pruebas, observaciones y analistas responsables en cada nivel.
-
-Objetivo:
-Facilitar el seguimiento y auditoría de la trazabilidad de las cepas en sus diferentes etapas de uso dentro del laboratorio.
-
-Tablas que la componen:
+<li>Tablas que la componen:</li>
 
 Tabla "CEPA_RESERVA": Contiene información de las alícuotas y referencias a nivel 2 de trabajo.
 
-Tabla "STOCK_CEPAS": Información de numeración y asociación a cepas.
+Tabla "STOCK_CEPAS": Información de numeración y asociación a tabla CEPAS.
 
 Tabla "CEPAS": Nombre de la cepa.
 
-Tabla "CEPA_TRABAJO": Información de los niveles de trabajo 2, 3 y 4, incluyendo fechas, resultados y referencias a observaciones y analistas.
+Tabla "CEPA_TRABAJO": Información de los niveles de trabajo 2, 3 y 4, incluyendo fechas, resultados y referencias a observaciones y analista.
 
 Tabla "PRUEBAS_CEPAS": Tipos de pruebas bioquímicas asociadas a cada nivel de trabajo.
 
 Tabla "OBSERVACION_TRABAJO": Observaciones registradas en cada nivel de trabajo.
 
-Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.
+Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.</li>
+
+<h2>Listado de Triggers</h2>
