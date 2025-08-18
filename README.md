@@ -60,9 +60,9 @@ ID_ANALISTA (INT, auto_incremental, PRIMARY KEY). Clave primaria.
 
 NOMBRE (VARCHAR(100), UNIQUE, NOT NULL). Iniciales de los analistas.
 
-<li>Relaciones (ANALISTA_FIRMA 1:n con STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5): </li>
+<li>Relaciones (ANALISTA_FIRMA 1:n con STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO): </li>
 
-ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO.
 
 <ul> 3. TABLA OBSERVAC_RESERVA</ul>
 <li>Descripción: Observaciones posibles luego de la reactivacion de cepa.</li>
@@ -86,9 +86,9 @@ ID_PRUEBAS (INT, AUTO_INCREMENT, NOT NULL, PRIMARY KEY). Clave primaria.
 
 TIPOS (VARCHAR(200), NOT NULL, UNIQUE). tipos de puebas de calidad que existen.
 
-<li>Relaciones (PRUEBAS_CEPAS 1:n STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5):</li>
+<li>Relaciones (PRUEBAS_CEPAS 1:n STOCK_CEPAS, CEPA_TRABAJO):</li>
 
-ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO.
 
 <ul>5. TABLA OBSERVACION_TRABAJO</ul>
 <li>Descripción: Observaciones predefinidas al uso o baja de cepas.</li>
@@ -99,22 +99,24 @@ ID_OBSERVACIONTRABAJO (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY). Clave primar
 
 DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE). descripcion de aceptacion o no.
 
-<li>Relaciones (OBSERVACION_TRABAJO 1:n CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5):</li>
+<li>Relaciones (OBSERVACION_TRABAJO 1:n CEPA_TRABAJO):</li>
 
-ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO2, CEPA_TRABAJO3, CEPA_TRABAJO4, CEPA_TRABAJO5.
+ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO.
 
 <ul>6. TABLA STOCK_CEPAS</ul>
 <li>Descripción: Tabla principal que registra la incorporación y datos principales de una cepa en stock.</li>
 
 <li>Campos:</li>
 
-ID_STOCK (VARCHAR(50), PRIMARY KEY, NOT NULL). Clave primaria.
+ID_STOCK (INT, AUTO_INCREMENT, PRIMARY KEY). Clave primaria.
+
+NUMERACION (INT, NOT NULL). corresponde a la numeracion para el control de stock
 
 FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION (DATE, NOT NULL)
 
 ID_PRUEBAS (INT) Clave foránea a PRUEBAS_CEPAS.
 
-RESULTADO, OBSERVACIONES (TEXT)
+RESULTADO, OBSERVACIONES (VARCHAR(500))
 
 ID_ANALISTA (INT) Clave foránea a ANALISTA_FIRMA.
 
@@ -142,105 +144,37 @@ ID_OBSERVACION (INT). Clave foránea a OBSERVAC_RESERVA.
 
 ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
-<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO2; CEPA_RESERVA n:1 ANALISTA_FIRMA; CEPA_RESERVA n:1 OBSERVAC_RESERVA; CEPA_RESERVA n:1 STOCK_CEPAS):</li>
+<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_RESERVA n:1 ANALISTA_FIRMA; CEPA_RESERVA n:1 OBSERVAC_RESERVA; CEPA_RESERVA n:1 STOCK_CEPAS):</li>
 
-ID_RESERVA Usado como clave foránea en: CEPA_TRABAJO2.
+ID_RESERVA Usado como clave foránea en: CEPA_TRABAJO.
 
 
-<ul>8. CEPA_TRABAJO2</ul>
+<ul>8. CEPA_TRABAJO</ul>
 <li>Descripción: Segunda etapa de uso de una cepa, derivada de reserva.</li>
 
 <li>Campos:</li>
 
-ID_TRABAJO2 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). Clave primaria
+ID_TRABAJO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria
 
-ID_RESERVA (INT). Clave foránea a CEPA_RESERVA.
+NIVEL (INT, NOT NULL). Representa el nivel de pasaje de la cepa
+
+ID_RESERVA_ORIGEN (INT). Clave foránea a CEPA_RESERVA.
+
+ID_TRABAJO_ORIGEN (INT). 
 
 FECHA_ACTIVACION, FECHA_BAJA (DATE, NOT NULL). 
 
 ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
 
-RESULTADO (TEXT).
+RESULTADO (VARCHAR(500)).
 
 ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
 
 ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
-<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO2; CEPA_TRABAJO3 1:1 CEPA_TRABAJO2; CEPA_TRABAJO2 n:1 ANALISTA_FIRMA; CEPA_TRABAJO2 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO2 n:1 PRUEBAS_CEPAS):</li>
+<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_TRABAJO 1:1 CEPA_TRABAJO; CEPA_TRABAJO n:1 ANALISTA_FIRMA; CEPA_TRABAJO n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO n:1 PRUEBAS_CEPAS):</li>
 
-ID_TRABAJO2 Usado como clave foránea en: CEPA_TRABAJO3.
-
-<ul>9. CEPA_TRABAJO3</ul>
-<li>Descripción: tercer pasaje de la cepa, derivado de la cepa de trabajo 2.</li>
-
-<li>Campos:</li>
-
-ID_TRABAJO3 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT) Clave primaria
-
-ID_TRABAJO2 (INT) Clave foránea a CEPA_TRABAJO2
-
-FECHA_ACTIVACION (DATE, NOT NULL)
-
-ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
-
-ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
-
-FECHA_BAJA (DATE, NOT NULL). Fecha que se termina la vida util de este pasaje
-
-<li>Relación (CEPA_TRABAJO2 1:1 CEPA_TRABAJO3; CEPA_TRABAJO3 1:1 CEPA_TRABAJO4; CEPA_TRABAJO3 n:1 ANALISTA_FIRMA; CEPA_TRABAJO3 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO3 n:1 PRUEBAS_CEPAS):</li>
-
-ID_TRABAJO3 Usado como clave foránea en: CEPA_TRABAJO4.
-
-<ul>10. CEPA_TRABAJO4</ul>
-<li>Descripción: cuarto pasaje de la cepa, derivado de la cepa de trabajo 3.</li>
-
-<li>Campos:</li>
-
-ID_TRABAJO4 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). CLave primaria
-
-ID_TRABAJO3 (INT) Clave foránea a CEPA_TRABAJO3
-
-FECHA_ACTIVACION (DATE, NOT NULL). 
-
-ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
-
-ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
-
-FECHA_BAJA (DATE, NOT NULL). Fecha de baja final de este pasaje.
-
-<li>Relación (CEPA_TRABAJO3 1:1 CEPA_TRABAJO4; CEPA_TRABAJO4 1:1 CEPA_TRABAJO5; CEPA_TRABAJO4 n:1 ANALISTA_FIRMA; CEPA_TRABAJO4 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO4 n:1 PRUEBAS_CEPAS):</li>
-
-ID_TRABAJO4 Usado como clave foránea en: CEPA_TRABAJO5.
-
-<ul>11. CEPA_TRABAJO5</ul>
-<li>Descripción: Quinto y último pasaje para uso de cepas, derivado de trabajo 4.</li>
-
-<li>Campos:</li>
-ID_TRABAJO5 (INT, PRIMARY KEY, UNIQUE, NOT NULL, AUTO_INCREMENT). Clave primaria
-
-ID_TRABAJO4 (INT). Clave foránea a CEPA_TRABAJO4
-
-FECHA_ACTIVACION (DATE, NOT NULL).
-
-ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO (TEXT). Se ponen los resultados esperados de las pruebas bioquimicas
-
-ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
-
-FECHA_BAJA (DATE, NOT NULL). Fecha de baja final
-
-<li>Relación (CEPA_TRABAJO4 1:1 CEPA_TRABAJO5; CEPA_TRABAJO5 n:1 ANALISTA_FIRMA; CEPA_TRABAJO5 n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO5 n:1 PRUEBAS_CEPAS):</li>
+ID_TRABAJO_ORIGEN Usado como clave foránea recursiva en: CEPA_TRABAJO.
 
 <h2>Listado de Vistas</h2>
 
