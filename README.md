@@ -10,6 +10,10 @@
 - [Situación Problemática](#Situación-Problematica)
 - [Modelo de Negocios](#Modelo-de-Negocios)
 - [Listado de Tablas](#Listado-de-Tablas)
+- [Listado de Vistas](#Listado-de-vistas)
+- [Listado de triggers](#Listado-de-triggers)
+- [Listado de funciones](#Listado-de-funciones)
+- [Listado de Store procedures](#Listado-de-Store-procedures)
 
 ---
 
@@ -289,3 +293,5 @@ Tabla "OBSERVACION_TRABAJO": Observaciones registradas en cada nivel de trabajo.
 Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.</li>
 
 <h2>Listado de Triggers</h2>
+<h2>Listado de funciones</h2>
+<h2>Listado de Store procedures</h2>
