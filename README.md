@@ -11,9 +11,9 @@
 - [Modelo de Negocios](#Modelo-de-Negocios)
 - [Listado de Tablas](#Listado-de-Tablas)
 - [Listado de Vistas](#Listado-de-vistas)
-- [Listado de triggers](#Listado-de-triggers)
 - [Listado de funciones](#Listado-de-funciones)
 - [Listado de Store procedures](#Listado-de-Store-procedures)
+- [Listado de triggers](#Listado-de-triggers)
 
 ---
 
@@ -292,6 +292,38 @@ Tabla "OBSERVACION_TRABAJO": Observaciones registradas en cada nivel de trabajo.
 
 Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.</li>
 
-<h2>Listado de Triggers</h2>
 <h2>Listado de funciones</h2>
+<ul>FUNCIÓN "dias_hasta_vencimiento"</ul>
+<li>Descripción:
+Esta función calcula cuántos días faltan para el vencimiento de una cepa en stock. Si el vencimiento ya pasó, devuelve el estado como “vencida”, sino devuelve la cantidad de dias.</li>
+
+<li>Objetivo:
+Facilitar el seguimiento de las cepas que se encuentran vencidas o saber cual es el tiempo hasta su caducidad.</li>
+
+<li>Tablas que usa:</li>
+Tabla "STOCK_CEPAS": utiliza el campo FECHA_VTO para calcular los días de diferencia contra la fecha actual (CURDATE()).
+
+Datos que devuelve:
+Un texto (VARCHAR) indicando: La cantidad de días restantes (ejemplo: "15 días restantes") o "vencida" en caso de que el vencimiento ya haya ocurrido.</li>
+
+<ul>FUNCIÓN "proxima_alicuota"</ul>
+<li>Descripción:
+Esta función determina cuál es la próxima alícuota disponible para un stock de cepas. Busca la alícuota de menor numeración que aún no tenga registrada una fecha de reconstitución.</li>
+
+<li>Objetivo:
+Garantizar el uso ordenado de las alícuotas.</li>
+
+<li>Tablas que usa:</li>
+Tabla "CEPA_RESERVA": utiliza los campos NUMERO_ALICUOTA (para ordenar de menor a mayor) y FECHA_RECONSTITUCION (para verificar si ya fue utilizada).
+
+Datos que devuelve:
+El número de la próxima alícuota disponible (INT) o si no hay alicuotas creadas devuelve 1.</li>
+
 <h2>Listado de Store procedures</h2>
+
+<h2>Listado de Triggers</h2>
+
+
+
+
+
