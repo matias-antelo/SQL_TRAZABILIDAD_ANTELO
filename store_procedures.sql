@@ -7,14 +7,11 @@ CREATE PROCEDURE agregar_cepa(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si ya existe una cepa con ese nombre
     SELECT COUNT(*) INTO v_existente
     FROM CEPAS
     WHERE NOMBRE = p_nombre;
 
     IF v_existente = 0 THEN
-        -- Insertar la nueva cepa
         INSERT INTO CEPAS (NOMBRE)
         VALUES (p_nombre);
         SELECT 'Cepa agregada correctamente' AS mensaje;
@@ -33,14 +30,11 @@ CREATE PROCEDURE agregar_analista(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si ya existe un analista con ese nombre
     SELECT COUNT(*) INTO v_existente
     FROM ANALISTA_FIRMA
     WHERE NOMBRE = p_nombre;
 
     IF v_existente = 0 THEN
-        -- Insertar el nuevo analista
         INSERT INTO ANALISTA_FIRMA (NOMBRE)
         VALUES (p_nombre);
         SELECT 'Analista agregado correctamente' AS mensaje;
@@ -59,14 +53,11 @@ CREATE PROCEDURE agregar_prueba(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si ya existe una prueba con ese tipo
     SELECT COUNT(*) INTO v_existente
     FROM PRUEBAS_CEPAS
     WHERE TIPOS = p_tipo;
 
     IF v_existente = 0 THEN
-        -- Insertar la nueva prueba
         INSERT INTO PRUEBAS_CEPAS (TIPOS)
         VALUES (p_tipo);
         SELECT 'Prueba agregada correctamente' AS mensaje;
@@ -85,8 +76,6 @@ CREATE PROCEDURE borrar_cepa(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si existe la cepa
     SELECT COUNT(*) INTO v_existente
     FROM CEPAS
     WHERE NOMBRE = p_nombre;
@@ -110,8 +99,6 @@ CREATE PROCEDURE borrar_analista(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si existe el analista
     SELECT COUNT(*) INTO v_existente
     FROM ANALISTA_FIRMA
     WHERE NOMBRE = p_nombre;
@@ -135,8 +122,6 @@ CREATE PROCEDURE borrar_prueba(
 )
 BEGIN
     DECLARE v_existente INT;
-
-    -- Verificar si existe la prueba
     SELECT COUNT(*) INTO v_existente
     FROM PRUEBAS_CEPAS
     WHERE TIPOS = p_tipo;
