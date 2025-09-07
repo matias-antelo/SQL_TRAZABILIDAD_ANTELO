@@ -320,6 +320,59 @@ Datos que devuelve:
 El número de la próxima alícuota disponible (INT) o si no hay alicuotas creadas devuelve 1.</li>
 
 <h2>Listado de Store procedures</h2>
+<ul>Store procedure "agregar_cepa"</ul>
+<li>Descripción:
+Permite insertar una nueva cepa en la tabla CEPAS. Antes de insertar, verifica si ya existe una cepa con el mismo nombre para evitar duplicados. Devuelve un mensaje indicando si la cepa fue agregada correctamente o si ya existía.</li>
+
+<li>Objetivo:
+Poder agregar cepas y garantiza la integridad de los datos evitando duplicados.</li>
+
+<li>Tablas que usa: "CEPAS"</li>
+
+<ul>Store procedure "agregar_analista"</ul>
+<li>Descripción:
+Inserta un nuevo analista en la tabla ANALISTA_FIRMA. Antes de insertar, comprueba si ya existe un analista con ese nombre para prevenir duplicados. Devuelve un mensaje indicando si se agrego o ya existia.</li>
+
+<li>Objetivo:
+Poder agregar analistas y garantiza la integridad de los datos evitando duplicados.</li>
+
+<li>Tablas que usa: "ANALISTA_FIRMA"</li>
+
+<ul>Store procedure "agregar_prueba"</ul>
+<li>Descripción:
+Inserta un nuevo tipo de prueba en la tabla PRUEBAS_CEPAS. Antes de insertar, verifica si el tipo de prueba ya existe, evitando duplicados. Retorna un mensaje si se agrego o si ya existia.</li>
+
+<li>Objetivo:
+Poder agregar pruebas y garantizar la integridad de los datos evitando duplicados.</li>
+
+<li>Tablas que usa: "PRUEBAS_CEPAS"</li>
+
+<ul>Store procedure "borrar_cepa"</ul>
+<li>Descripción:
+Permite eliminar una cepa existente en la tabla CEPAS buscando por nombre. Antes de borrar, verifica si la cepa existe y devuelve un mensaje según corresponda.</li>
+
+<li>Objetivo:
+Facilita la eliminación segura de cepas evitando errores de eliminar registros completos.</li>
+
+<li>Tablas que usa: "CEPAS"</li>
+
+<ul>Store procedure "borrar_analista"</ul>
+<li>Descripción:
+Permite eliminar un analista de la tabla ANALISTA_FIRMA por nombre. Verifica previamente si el analista existe y devuelve un mensaje según corresponda.</li>
+
+<li>Objetivo:
+Facilita la eliminación segura de firmas de analistas evitando errores de eliminar registros completos.</li>
+
+<li>Tablas que usa: "ANALISTA_FIRMA"</li>
+
+<ul>Store procedure "borrar_prueba"</ul>
+<li>Descripción:
+Permite eliminar una prueba de la tabla PRUEBAS_CEPAS por nombre. Verifica previamente si la prueba existe y devuelve un mensaje según corresponda.</li>
+
+<li>Objetivo:
+Facilita la eliminación segura de pruebas evitando errores de eliminar registros completos.</li>
+
+<li>Tablas que usa: "PRUEBAS_CEPAS"</li>
 
 <h2>Listado de Triggers</h2>
 
