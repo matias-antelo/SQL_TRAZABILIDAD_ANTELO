@@ -375,6 +375,14 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Tablas que usa: "PRUEBAS_CEPAS"</li>
 
 <h2>Listado de Triggers</h2>
+<ul>Trigger "stock_cepas_auditoria"</ul>
+<li>Descripción:
+.</li>
+
+<li>Objetivo:
+ .</li>
+
+<li>Tablas que usa: "stock_cepas"</li>
 
 
 
