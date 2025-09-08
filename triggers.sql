@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS STOCK_CEPAS_AUDITORIA (
     RESULTADO VARCHAR(500),
     OBSERVACIONES VARCHAR(500),
     ID_ANALISTA INT,
-    USUARIO VARCHAR(100),          -- Usuario que hizo la acción
-    FECHA DATETIME,                -- Momento exacto del cambio
-    ACCION VARCHAR(200)            -- Descripción de la acción (insert/eliminación)
+    USUARIO VARCHAR(100),
+    FECHA DATETIME,
+    ACCION VARCHAR(200)
 );
 
 -- tabla para auditar cambios en CEPA_RESERVA
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS CEPA_RESERVA_AUDITORIA (
     FECHA_RECONSTITUCION DATE,
     ID_OBSERVACION INT,
     ID_ANALISTA INT,
-    USUARIO VARCHAR(100),       -- Usuario que realizó la acción
-    FECHA DATETIME,             -- Momento exacto de la acción
-    ACCION VARCHAR(200)         -- Texto con la acción realizada
+    USUARIO VARCHAR(100),
+    FECHA DATETIME,
+    ACCION VARCHAR(200)
 );
 
 -- tabla para auditar cambios en CEPA_TRABAJO
@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS CEPA_TRABAJO_AUDITORIA (
     ID_OBSERVACIONTRABAJO INT,
     ID_ANALISTA INT,
     FECHA_BAJA DATE,
-    USUARIO VARCHAR(100),     -- Usuario que hizo la acción
-    FECHA DATETIME,           -- Momento de la acción
-    ACCION VARCHAR(200)       -- Acción realizada
+    USUARIO VARCHAR(100),
+    FECHA DATETIME,
+    ACCION VARCHAR(200)
 );
 
 -- TRIGGERS PARA AUDITORIAS
@@ -104,7 +104,7 @@ BEGIN
     )
     VALUES (
         NEW.ID_RESERVA, NEW.ID_STOCK, NEW.NUMERO_ALICUOTA, NEW.FECHA_RECONSTITUCION, 
-        NEW.ID_OBSERVACION, NEW.ID_ANALISTA, CURRENT_USER(), NOW(), 'Se insertó nueva reserva'
+        NEW.ID_OBSERVACION, NEW.ID_ANALISTA, USER(), NOW(), 'Se insertó nueva reserva'
     );
 END //
 
@@ -123,7 +123,7 @@ BEGIN
     )
     VALUES (
         OLD.ID_RESERVA, OLD.ID_STOCK, OLD.NUMERO_ALICUOTA, OLD.FECHA_RECONSTITUCION, 
-        OLD.ID_OBSERVACION, OLD.ID_ANALISTA, CURRENT_USER(), NOW(), 'Se eliminó una reserva'
+        OLD.ID_OBSERVACION, OLD.ID_ANALISTA, USER(), NOW(), 'Se eliminó una reserva'
     );
 END //
 
@@ -144,7 +144,7 @@ BEGIN
     VALUES (
         NEW.ID_TRABAJO, NEW.NIVEL, NEW.ID_RESERVA_ORIGEN, NEW.ID_TRABAJO_ORIGEN, NEW.FECHA_ACTIVACION,
         NEW.ID_PRUEBAS, NEW.RESULTADO, NEW.ID_OBSERVACIONTRABAJO, NEW.ID_ANALISTA, NEW.FECHA_BAJA,
-        CURRENT_USER(), NOW(), 'Se insertó nueva cepa de trabajo'
+        USER(), NOW(), 'Se insertó nueva cepa de trabajo'
     );
 END //
 
@@ -165,7 +165,7 @@ BEGIN
     VALUES (
         OLD.ID_TRABAJO, OLD.NIVEL, OLD.ID_RESERVA_ORIGEN, OLD.ID_TRABAJO_ORIGEN, OLD.FECHA_ACTIVACION,
         OLD.ID_PRUEBAS, OLD.RESULTADO, OLD.ID_OBSERVACIONTRABAJO, OLD.ID_ANALISTA, OLD.FECHA_BAJA,
-        CURRENT_USER(), NOW(), 'Se eliminó una cepa de trabajo'
+        USER(), NOW(), 'Se eliminó una cepa de trabajo'
     );
 END //
 
