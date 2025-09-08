@@ -375,16 +375,45 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Tablas que usa: "PRUEBAS_CEPAS"</li>
 
 <h2>Listado de Triggers</h2>
-<ul>Trigger "stock_cepas_auditoria"</ul>
-<li>Descripción:
-.</li>
+<ul>Trigger "tr_insert_stock_cepas"</ul>
+<li>Descripción: Registra en la tabla espejo STOCK_CEPAS_AUDITORIA toda nueva inserción realizada en STOCK_CEPAS.</li>
 
-<li>Objetivo:
- .</li>
+<li>Objetivo: Mantener un historial de las cepas ingresadas en stock, junto con usuario, fecha y detalle de la acción.</li>
 
-<li>Tablas que usa: "stock_cepas"</li>
+<li>Tablas que usa: "STOCK_CEPAS" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo luego de la insercion de datos</li>
 
+<ul>Trigger "tr_delete_stock_cepas"</ul>
+<li>Descripción: Registra en la tabla espejo STOCK_CEPAS_AUDITORIA los datos de una cepa de stock antes de ser eliminada.</li>
 
+<li>Objetivo: Garantizar que antes de una eliminacion se tenga un registro de los datos que fueron eliminados para evitar pérdida de información relevante.</li>
 
+<li>Tablas que usa: "STOCK_CEPAS" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de la eliminación de datos</li>
 
+<ul>Trigger "tr_insert_cepa_reserva"</ul>
+<li>Descripción: Inserta en CEPA_RESERVA_AUDITORIA un registro con los datos de cada nueva reserva creada con usuario, fecha y detalle de la acción.</li>
+
+<li>Objetivo: Mantener un historial de las cepas ingresadas en reserva, junto con usuario, fecha y detalle de la acción.</li>
+
+<li>Tablas que usa: "CEPA_RESERVA" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo despues de la inserción de los datos.</li>
+
+<ul>Trigger "tr_delete_cepa_reserva"</ul>
+<li>Descripción: Registra en la tabla espejo CEPA_RESERVA_AUDITORIA los datos de una cepa de stock antes de ser eliminada.</li>
+
+<li>Objetivo: Garantizar que antes de una eliminacion se tenga un registro de los datos que fueron eliminados para evitar pérdida de información relevante para fines de auditoria y control.</li>
+
+<li>Tablas que usa: "CEPA_RESERVA" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de la eliminación de datos</li>
+
+<ul>Trigger "tr_insert_cepa_trabajo"</ul>
+<li>Descripción: Registra en la tabla espejo CEPA_TRABAJO_AUDITORIA los datos de una nueva cepa de trabajo al momento de ser creada, con usuario, fecha y acción.</li>
+
+<li>Objetivo: Mantener un historial de las cepas ingresadas en trabajo, junto con usuario, fecha y detalle de la acción necesaria para cumplir con la normativa vigente.</li>
+
+<li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo luego de ser insertada.</li>
+
+<ul>Trigger "tr_delete_cepa_trabajo"</ul>
+<li>Descripción: Guarda en CEPA_TRABAJO_AUDITORIA los datos de una cepa de trabajo antes de que sea eliminada.</li>
+
+<li>Objetivo: Mantener un historial de las cepas eliminadas en trabajo, junto con usuario, fecha y detalle de la acción necesaria para cumplir con la normativa vigente como asi tambien Evitar pérdida de información y proporcionar trazabilidad completa de los registros eliminados.</li>
+
+<li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de ser eliminada.</li>
 
