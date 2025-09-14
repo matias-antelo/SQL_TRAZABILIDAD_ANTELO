@@ -1,3 +1,5 @@
+USE `trazabilidad+Antelo`;
+
 -- CREACION DE TABLAS ESPEJOS PARA AUDITORIAS.
 -- tabla para auditar cambios en STOCK_CEPAS
 CREATE TABLE IF NOT EXISTS STOCK_CEPAS_AUDITORIA (

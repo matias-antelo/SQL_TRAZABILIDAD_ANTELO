@@ -1,3 +1,5 @@
+USE `trazabilidad+Antelo`;
+
 -- FUNCIONES
 -- Función para calcular los días hasta el vencimiento de un stock de cepas
 

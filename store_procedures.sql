@@ -1,3 +1,5 @@
+USE `trazabilidad+Antelo`;
+
 -- STORE PROCEDURES
 -- Procedimiento para agregar una nueva cepa
 DELIMITER //
