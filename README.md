@@ -180,6 +180,136 @@ ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
 ID_TRABAJO_ORIGEN Usado como clave foránea recursiva en: CEPA_TRABAJO.
 
+<ul>9. MEDIO_CULTIVO_STOCK</ul>
+<li>Descripción: Registro del stock de medios de cultivo disponibles en el laboratorio.</li> 
+
+<li>Campos:</li>
+
+ID_MEDIO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+NOMBRE (VARCHAR(100), NOT NULL). Nombre del medio de cultivo.
+
+FABRICANTE (VARCHAR(100)). Fabricante del medio.
+
+LOTE (VARCHAR(50)). Número de lote del medio.
+
+VENCIMIENTO (DATE). Fecha de vencimiento del medio.
+
+<li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 MEDIO_CULTIVO_STOCK): </li>
+
+ID_MEDIO usado como clave forane en: PREPARACION_MEDIO_CULTIVO.
+
+<ul>10. ECOMETRICO</ul> 
+<li>Descripción: Tabla de control ecométrico de los medios de cultivo para validar la calidad microbiológica.</li>
+<li>Campos:</li>
+
+ID_ECOMETRICO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+FECHA (DATE, NOT NULL). Fecha del control ecométrico.
+
+ICA (INT, NOT NULL). Índice de control.
+
+ICE (INT, NOT NULL). Índice de control.
+
+RESULTADO (VARCHAR(100), NOT NULL). Resultado del control.
+
+<li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 ECOMETRICO):</li>
+ID_ECOMETRICO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
+
+<ul>11. AGUA_DEST</ul>
+<li>Descripción: Registro para control del agua destilada utilizada en la preparación de medios de cultivo.</li>
+<li>Campos:</li>
+
+ID_AGUA (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+FECHA_ENTRADA (DATE, NOT NULL). Fecha de control del agua destilada.
+
+CONTROL (VARCHAR(100)). Resultado del control de calidad del agua.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+<li>Relaciones (AGUA_DEST n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 AGUA_DEST): </li>
+ID_AGUA usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
+
+<ul>12. PREPARACION_MEDIO_CULTIVO</ul>
+<li>Descripción: Registro de la preparación de medios de cultivo en el laboratorio.</li>
+<li>Campos:</li>
+
+ID_PREPARACION (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+ID_MEDIO (INT, NOT NULL). Clave foránea a MEDIO_CULTIVO_STOCK.
+
+FECHA_PREPARACION (DATE, NOT NULL). Fecha de preparación del medio.
+
+ID_ECOMETRICO (INT). Clave foránea a ECOMETRICO.
+
+ID_AGUA (INT). Clave foránea a AGUA_DEST.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+PH (INT). Valor de pH medido en la preparación.
+
+OBSERVACIONES (VARCHAR(500)). Observaciones generales.
+
+ID_CICLO (INT). Clave foránea a ESTERILIZACION.
+
+<li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 MEDIO_CULTIVO_STOCK, PREPARACION_MEDIO_CULTIVO n:1 ECOMETRICO, PREPARACION_MEDIO_CULTIVO n:1 AGUA_DEST, PREPARACION_MEDIO_CULTIVO n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 ESTERILIZACION, CEPA_TRABAJO n:1 PREPARACION_MEDIO_CULTIVO):</li>
+ID_PREPARACION usado como clave foranea en: CEPA_TRABAJO.
+
+<ul>13. EQUIPOS</ul>
+<li>Descripción: Registro de los equipos del laboratorio y su control.</li>
+<li>Campos:</li>
+
+ID_EQUIPO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+MARCA (VARCHAR(100)). Marca del equipo.
+
+FECHA_CALIBRACION (DATE). Fecha de última calibración.
+
+VTO_CALIBRACION (DATE). Fecha de vencimiento de la calibración.
+
+<li>Relaciones (ESTERILIZACION n:1 EQUIPOS, AUTOCLAVE_VERIF n:1 EQUIPOS):</li>
+ID_EQUIPO usado como clave foranea en: ESTERILIZACION y AUTOCLAVE_VERIF.
+
+<ul>14. ESTERILIZACION</ul>
+<li>Descripción: Registro de los ciclos de esterilización realizados en autoclaves.</li>
+<li>Campos:</li>
+
+ID_CICLO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+ID_EQUIPO (INT, NOT NULL). Clave foránea a EQUIPOS.
+
+FECHA (DATE, NOT NULL). Fecha del ciclo de esterilización.
+
+TIEMPO (INT). Tiempo del ciclo en minutos.
+
+TEMPERATURA (INT). Temperatura alcanzada.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+<li>Relaciones (ESTERILIZACION n:1 EQUIPOS, ESTERILIZACION n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 ESTERILIZACION):</li>
+ID_CICLO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
+
+<ul>15. AUTOCLAVE_VERIF</ul>
+<li>Descripción: Registro de la verificación de los autoclaves como control de calidad.</li>
+<li>Campos:</li>
+
+ID_AUTOCLAVE (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
+
+ID_EQUIPO (INT, NOT NULL). Clave foránea a EQUIPOS.
+
+FECHA (DATE, NOT NULL). Fecha de la verificación.
+
+LECTURA_1 (DECIMAL(8,3)). Lectura 1 registrada.
+
+LECTURA_2 (DECIMAL(8,3)). Lectura 2 registrada.
+
+CUMPLE (BOOLEAN). Indica si el autoclave cumple con las condiciones establecidas.
+
+ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+
+<li>Relaciones (AUTOCLAVE_VERIF n:1 EQUIPOS, AUTOCLAVE_VERIF n:1 ANALISTA_FIRMA):</li>
+
 <h2>Listado de Vistas</h2>
 
 <ul>VISTA "CEPAS_RECONSTITUIDAS"</ul>
