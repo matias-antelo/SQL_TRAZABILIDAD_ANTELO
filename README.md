@@ -590,5 +590,31 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de ser eliminada.</li>
 
 <h2>Listado de Transacciones</h2>
+<ul><b>Primer transaccion</b></ul>
+<li>Descripción: 
+-- Iniciamos una nueva transacción.
+-- Utilizamos la sentencia "INSERT INTO" para agregar registros a la tabla "EQUIPOS". 
+-- Agregamos un savepoint sp1 luego de la insercion del primer equipo.
+-- Utilizamos la sentencia "INSERT INTO" nuevamente para agregar otro equipo.
+-- se utiliza el ROLLBACK para volver al punto sp1.
+-- se realiza el COMMIT para confirmar la transaccion.
+</li>
+
+<li>Objetivo: crear dos inserciones en la tabla equipo usando un SAVEPOINT, lo que se busco es ver el correcto funcionamiento del SAVEPOINT utilizando un ROLLBACK para volver atras la segunda insercion.</li>
+
+<li>Tablas que usa: "EQUIPOS".</li>
+
+<ul><b>Segunda transaccion</b></ul>
+<li>Descripción: 
+-- Iniciamos una nueva transacción.
+-- Utilizamos la sentencia "INSERT INTO" para agregar registros a la tabla "ESTERILIZACION". 
+-- Agregamos un savepoint sp2 luego de la insercion del primer ciclo.
+-- Utilizamos la sentencia "INSERT INTO" nuevamente para agregar otro ciclo.
+-- En este caso se utiliza el ROLLBACK que nada se guarda en la tabla.
+</li>
+
+<li>Objetivo: crear dos inserciones en la tabla ESTERILIZACION, lo que se busco es ver el correcto funcionamiento del ROLLBACK sin aclarar a que punto queremos volver y ver que borre todas las inserciones.</li>
+
+<li>Tablas que usa: "ESTERILIZACION".</li>
 
 <h2>Listado de tablas de hecho</h2>
