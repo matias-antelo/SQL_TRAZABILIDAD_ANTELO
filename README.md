@@ -176,9 +176,13 @@ ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
 
 ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
 
-<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_TRABAJO 1:1 CEPA_TRABAJO; CEPA_TRABAJO n:1 ANALISTA_FIRMA; CEPA_TRABAJO n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO n:1 PRUEBAS_CEPAS):</li>
+ID_PREPARACION INT NULL. Clave foránea a PREPARACION_MEDIO_CULTIVO.
+
+<li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_TRABAJO 1:1 CEPA_TRABAJO; CEPA_TRABAJO n:1 ANALISTA_FIRMA; CEPA_TRABAJO n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO n:1 PRUEBAS_CEPAS; PREPARACION_MEDIO_CULTIVO 1:n CEPA_TRABAJO):</li>
 
 ID_TRABAJO_ORIGEN Usado como clave foránea recursiva en: CEPA_TRABAJO.
+
+SE MODIFICA LA TABLA ORIGINAL PARA AGREGARLE EL CAMPO PREPARACION_MEDIO_CULTIVO Y SU RELACION.
 
 <ul>9. MEDIO_CULTIVO_STOCK</ul>
 <li>Descripción: Registro del stock de medios de cultivo disponibles en el laboratorio.</li> 
@@ -421,6 +425,42 @@ Tabla "PRUEBAS_CEPAS": Tipos de pruebas bioquímicas asociadas a cada nivel de t
 Tabla "OBSERVACION_TRABAJO": Observaciones registradas en cada nivel de trabajo.
 
 Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.</li>
+
+<ul>VISTA "TRAZABILIDAD_PREPARACION_ESTERILIZACION"</ul>
+
+<li>Descripción: Esta vista muestra la trazabilidad completa del proceso de preparación y esterilización de un medio de cultivo. Incluye los datos de preparación del medio (fecha, pH, observaciones y analista), los parámetros del ciclo de esterilización (fecha, tiempo, temperatura y analista), la información del equipo utilizado (marca, calibraciones) y los controles de verificación del autoclave (lecturas y cumplimiento).</li> 
+
+<li>Objetivo: El objetivo de esta vista es tener en un solo registro la información de todo el proceso de preparación y esterilización para conocer su trazabilidad.</li> 
+
+<li>Tablas que la componen:</li>
+
+Tabla "PREPARACION_MEDIO_CULTIVO": Contiene la información de cada preparación realizada (fecha, pH, observaciones y analista responsable).
+
+Tabla "ESTERILIZACION": Registra los datos de cada ciclo de esterilización (fecha, tiempo, temperatura y analista).
+
+Tabla "EQUIPOS": Incluye información del equipo utilizado en el ciclo (marca, fecha de calibración y vencimiento).
+
+Tabla "AUTOCLAVE_VERIF": Contiene los resultados de verificación del autoclave (lecturas y cumplimiento).
+
+Tabla "ANALISTA_FIRMA": Se utiliza para identificar a los analistas responsables de la preparación y esterilización.</li>
+
+<ul>VISTA "V_TRAZABILIDAD_MEDIOS"</ul>
+
+<li>Descripción: Esta vista muestra la trazabilidad completa de los medios de cultivo preparados para control de calidad. Incluye la preparación del medio (fecha, pH, observaciones y analista), los datos del medio en stock (nombre, fabricante, lote y vencimiento), los resultados de los controles ecométricos (fecha, ICA, ICE y resultado), y el control del agua utilizada (fecha, resultado y analista responsable).</li> 
+
+<li>Objetivo: El objetivo de esta vista es facilitar la trazabilidad y control de cada medio preparado.</li>
+
+<li>Tablas que la componen:</li>
+
+Tabla "PREPARACION_MEDIO_CULTIVO": Contiene la información de cada preparación de medio (fecha, pH, observaciones y analista).
+
+Tabla "MEDIO_CULTIVO_STOCK": Registra los medios de cultivo disponibles (nombre, fabricante, lote, vencimiento).
+
+Tabla "ECOMETRICO": Incluye los resultados de los controles ecométricos (fecha, ICA, ICE y resultado).
+
+Tabla "AGUA_DEST": Registra los datos del agua destilada utilizada en la preparación (fecha y resultado de control).
+
+Tabla "ANALISTA_FIRMA": Identifica a los analistas responsables de la preparación del medio y del control de agua.
 
 <h2>Listado de funciones</h2>
 <ul>FUNCIÓN "dias_hasta_vencimiento"</ul>
