@@ -14,6 +14,8 @@
 - [Listado de funciones](#Listado-de-funciones)
 - [Listado de Store procedures](#Listado-de-Store-procedures)
 - [Listado de triggers](#Listado-de-triggers)
+- [Listado de Transacciones](#Listado-de-Transacciones)
+- [Listado de tablas de hecho](#Listado-de-tablas-de-hecho)
 
 ---
 
@@ -587,3 +589,4 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 
 <li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de ser eliminada.</li>
 
+<h2>Listado de Transacciones</h2>
