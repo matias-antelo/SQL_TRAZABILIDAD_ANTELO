@@ -590,3 +590,5 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de ser eliminada.</li>
 
 <h2>Listado de Transacciones</h2>
+
+<h2>Listado de tablas de hecho</h2>
