@@ -43,11 +43,15 @@ La implementación de esta base de datos soluciona estos problemas ya que no ser
 Dicha propuesta no solo sirve para control de stock, sino que también te permite demostrar la trazabilidad para cumplir con las normativas de los organismos oficiales como ANMAT, SENASA, INAL, entre otros.
 </p>
 
+<h2>Diagrama Entidad Relación (DER)</h2>
+
+
 <h2>Listado de Tablas</h2>
 <ul> <b> 1. TABLA CEPAS </b></ul>
 <li>Descripción: Tabla base que contiene los microorganismos disponibles.</li>
 
 <li>Campos:</li>
+
 
 | Nombre Campo     | Tipo de dato                    | Tipo de clave   |
 | ---------------- | ------------------------------- | --------------- |
