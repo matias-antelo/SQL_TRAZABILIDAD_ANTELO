@@ -9,6 +9,7 @@
 - [Objetivos](#Objetivos)
 - [Situación Problemática](#Situación-Problematica)
 - [Modelo de Negocios](#Modelo-de-Negocios)
+- [Diagrama Entidad Relación (DER)](#Diagrama-Entidad-Relación-(DER))
 - [Listado de Tablas](#Listado-de-Tablas)
 - [Listado de Vistas](#Listado-de-vistas)
 - [Listado de funciones](#Listado-de-funciones)
@@ -45,6 +46,7 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 <h2>Diagrama Entidad Relación (DER)</h2>
 
+<img src="FOTO/Diagrama entidad Relacion (DER).jpg" alt="DER" width="1200"/>
 
 <h2>Listado de Tablas</h2>
 <ul> <b> 1. TABLA CEPAS </b> </ul>
