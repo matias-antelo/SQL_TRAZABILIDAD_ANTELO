@@ -44,10 +44,15 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 </p>
 
 <h2>Listado de Tablas</h2>
-<ul>1. TABLA CEPAS</ul>
+<ul> <b> 1. TABLA CEPAS </b></ul>
 <li>Descripción: Tabla base que contiene los microorganismos disponibles.</li>
 
 <li>Campos:</li>
+
+| Nombre Campo     | Tipo de dato                    | Tipo de clave   |
+| ---------------- | ------------------------------- | --------------- |
+| MOO_ID           | INT, auto_incremental           |  PRIMARY KEY    |
+| NOMBRE           | VARCHAR(100), UNIQUE, NOT NULL  |                 |
 
 MOO_ID (INT, auto_incremental, PRIMARY KEY). Clave primaria.
 
