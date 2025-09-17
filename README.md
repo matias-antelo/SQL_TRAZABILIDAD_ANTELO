@@ -227,7 +227,6 @@ ID_MEDIO usado como clave forane en: PREPARACION_MEDIO_CULTIVO.
 ID_ECOMETRICO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
 <br>
-
 <ul> <b> 11. AGUA_DEST </b> </ul>
 <li>Descripción: Registro para control del agua destilada utilizada en la preparación de medios de cultivo.</li>
 <li>Campos:</li>
@@ -339,7 +338,7 @@ Tabla "CEPAS": Contiene los nombres de las cepas. Se utiliza para obtener el nom
 Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables de la reconstitución.</li>
 
 
-<ul>VISTA "CEPAS_VENCIDAS_SIN_USAR"</ul>
+<ul> <b> VISTA "CEPAS_VENCIDAS_SIN_USAR" </b> </ul>
 
 <li>Descripción:
 Esta vista muestra todas las cepas que se encuentran vencidas y que no han sido reconstituídas, incluyendo información de la cepa (nombre), numeración de lote, fechas (VTO, reconstitución, recepción), observaciones y analista responsable.</li>
@@ -356,7 +355,7 @@ Tabla "CEPAS": Permite obtener el nombre de la cepa asociada.
 Tabla "ANALISTA_FIRMA": Permite obtener el nombre del analista responsable.</li>
 
 
-<ul>VISTA "CEPAS_NO_VENCIDAS_SIN_USAR"</ul>
+<ul> <b> VISTA "CEPAS_NO_VENCIDAS_SIN_USAR" </b> </ul>
 
 <li>Descripción:
 Esta vista muestra las cepas que aún no han vencido y que no han sido reconstituídas, con información del lote (numeración), resultado, observaciones, fechas y analista responsable.</li>
@@ -372,7 +371,7 @@ Tabla "CEPAS": Nombre de la cepa asociada.
 
 Tabla "ANALISTA_FIRMA": Nombre del analista responsable.</li>
 
-<ul>VISTA "CEPAS_RESERVA_RECONSTITUIDAS"</ul>
+<ul> <b> VISTA "CEPAS_RESERVA_RECONSTITUIDAS" </b> </ul>
 
 <li>Descripción:
 Esta vista muestra las alícuotas de reserva que han sido reconstituídas, incluyendo el número de alícuota, fecha de reconstitución, observación, analista responsable, nombre de la cepa y numeración de lote.</li>
@@ -392,7 +391,7 @@ Tabla "OBSERVACION_RESERVA": Contiene las descripciones de las observaciones aso
 
 Tabla "ANALISTA_FIRMA": Contiene los nombres de los analistas responsables.</li>
 
-<ul>VISTA "CEPAS_RESERVA_NO_RECONSTITUIDAS"</ul>
+<ul> <b> VISTA "CEPAS_RESERVA_NO_RECONSTITUIDAS" </b> </ul>
 
 <li>Descripción:
 Esta vista muestra las alícuotas de reserva que aún no han sido reconstituídas, con información del número de alícuota, nombre de la cepa, fecha y número de lote.</li>
@@ -408,7 +407,7 @@ Tabla "STOCK_CEPAS": Permite obtener la numeración del lote.
 
 Tabla "CEPAS": Permite obtener el nombre de la cepa.</li>
 
-<ul>VISTA "TRAZABILIDAD_CEPA_TRABAJO"</ul>
+<ul> <b> VISTA "TRAZABILIDAD_CEPA_TRABAJO" </b> </ul>
 
 <li>Descripción:
 Esta vista permite ver la trazabilidad completa de las cepas desde reserva hasta los niveles 2, 3 y 4 de trabajo, incluyendo fechas de activación, fecha de baja, tipo de prueba, resultados de pruebas, observaciones y analistas responsables en cada nivel.</li>
@@ -432,7 +431,7 @@ Tabla "OBSERVACION_TRABAJO": Observaciones registradas en cada nivel de trabajo.
 
 Tabla "ANALISTA_FIRMA": Analistas responsables en cada nivel de trabajo.</li>
 
-<ul>VISTA "TRAZABILIDAD_PREPARACION_ESTERILIZACION"</ul>
+<ul> <b> VISTA "TRAZABILIDAD_PREPARACION_ESTERILIZACION" </b> </ul>
 
 <li>Descripción: Esta vista muestra la trazabilidad completa del proceso de preparación y esterilización de un medio de cultivo. Incluye los datos de preparación del medio (fecha, pH, observaciones y analista), los parámetros del ciclo de esterilización (fecha, tiempo, temperatura y analista), la información del equipo utilizado (marca, calibraciones) y los controles de verificación del autoclave (lecturas y cumplimiento).</li> 
 
@@ -450,7 +449,7 @@ Tabla "AUTOCLAVE_VERIF": Contiene los resultados de verificación del autoclave 
 
 Tabla "ANALISTA_FIRMA": Se utiliza para identificar a los analistas responsables de la preparación y esterilización.</li>
 
-<ul>VISTA "V_TRAZABILIDAD_MEDIOS"</ul>
+<ul> <b> VISTA "V_TRAZABILIDAD_MEDIOS" </b> </ul>
 
 <li>Descripción: Esta vista muestra la trazabilidad completa de los medios de cultivo preparados para control de calidad. Incluye la preparación del medio (fecha, pH, observaciones y analista), los datos del medio en stock (nombre, fabricante, lote y vencimiento), los resultados de los controles ecométricos (fecha, ICA, ICE y resultado), y el control del agua utilizada (fecha, resultado y analista responsable).</li> 
 
@@ -469,7 +468,7 @@ Tabla "AGUA_DEST": Registra los datos del agua destilada utilizada en la prepara
 Tabla "ANALISTA_FIRMA": Identifica a los analistas responsables de la preparación del medio y del control de agua.
 
 <h2>Listado de funciones</h2>
-<ul>FUNCIÓN "dias_hasta_vencimiento"</ul>
+<ul> <b> FUNCIÓN "dias_hasta_vencimiento" </b> </ul>
 <li>Descripción:
 Esta función calcula cuántos días faltan para el vencimiento de una cepa en stock. Si el vencimiento ya pasó, devuelve el estado como “vencida”, sino devuelve la cantidad de dias.</li>
 
@@ -482,7 +481,7 @@ Tabla "STOCK_CEPAS": utiliza el campo FECHA_VTO para calcular los días de difer
 Datos que devuelve:
 Un texto (VARCHAR) indicando: La cantidad de días restantes (ejemplo: "15 días restantes") o "vencida" en caso de que el vencimiento ya haya ocurrido.</li>
 
-<ul>FUNCIÓN "proxima_alicuota"</ul>
+<ul> <b> FUNCIÓN "proxima_alicuota" </b> </ul>
 <li>Descripción:
 Esta función determina cuál es la próxima alícuota disponible para un stock de cepas. Busca la alícuota de menor numeración que aún no tenga registrada una fecha de reconstitución.</li>
 
@@ -496,7 +495,7 @@ Datos que devuelve:
 El número de la próxima alícuota disponible (INT) o si no hay alicuotas creadas devuelve 1.</li>
 
 <h2>Listado de Store procedures</h2>
-<ul>Store procedure "agregar_cepa"</ul>
+<ul> <b> Store procedure "agregar_cepa" </b> </ul>
 <li>Descripción:
 Permite insertar una nueva cepa en la tabla CEPAS. Antes de insertar, verifica si ya existe una cepa con el mismo nombre para evitar duplicados. Devuelve un mensaje indicando si la cepa fue agregada correctamente o si ya existía.</li>
 
@@ -505,7 +504,7 @@ Poder agregar cepas y garantiza la integridad de los datos evitando duplicados.<
 
 <li>Tablas que usa: "CEPAS"</li>
 
-<ul>Store procedure "agregar_analista"</ul>
+<ul> <b> Store procedure "agregar_analista" </b> </ul>
 <li>Descripción:
 Inserta un nuevo analista en la tabla ANALISTA_FIRMA. Antes de insertar, comprueba si ya existe un analista con ese nombre para prevenir duplicados. Devuelve un mensaje indicando si se agrego o ya existia.</li>
 
@@ -514,7 +513,7 @@ Poder agregar analistas y garantiza la integridad de los datos evitando duplicad
 
 <li>Tablas que usa: "ANALISTA_FIRMA"</li>
 
-<ul>Store procedure "agregar_prueba"</ul>
+<ul> <b> Store procedure "agregar_prueba"</b></ul>
 <li>Descripción:
 Inserta un nuevo tipo de prueba en la tabla PRUEBAS_CEPAS. Antes de insertar, verifica si el tipo de prueba ya existe, evitando duplicados. Retorna un mensaje si se agrego o si ya existia.</li>
 
@@ -523,7 +522,7 @@ Poder agregar pruebas y garantizar la integridad de los datos evitando duplicado
 
 <li>Tablas que usa: "PRUEBAS_CEPAS"</li>
 
-<ul>Store procedure "borrar_cepa"</ul>
+<ul> <b> Store procedure "borrar_cepa" </b> </ul>
 <li>Descripción:
 Permite eliminar una cepa existente en la tabla CEPAS buscando por nombre. Antes de borrar, verifica si la cepa existe y devuelve un mensaje según corresponda.</li>
 
@@ -532,7 +531,7 @@ Facilita la eliminación segura de cepas evitando errores de eliminar registros 
 
 <li>Tablas que usa: "CEPAS"</li>
 
-<ul>Store procedure "borrar_analista"</ul>
+<ul> <b> Store procedure "borrar_analista" </b> </ul>
 <li>Descripción:
 Permite eliminar un analista de la tabla ANALISTA_FIRMA por nombre. Verifica previamente si el analista existe y devuelve un mensaje según corresponda.</li>
 
@@ -541,7 +540,7 @@ Facilita la eliminación segura de firmas de analistas evitando errores de elimi
 
 <li>Tablas que usa: "ANALISTA_FIRMA"</li>
 
-<ul>Store procedure "borrar_prueba"</ul>
+<ul> <b> Store procedure "borrar_prueba" </b> </ul>
 <li>Descripción:
 Permite eliminar una prueba de la tabla PRUEBAS_CEPAS por nombre. Verifica previamente si la prueba existe y devuelve un mensaje según corresponda.</li>
 
@@ -551,42 +550,42 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Tablas que usa: "PRUEBAS_CEPAS"</li>
 
 <h2>Listado de Triggers</h2>
-<ul>Trigger "tr_insert_stock_cepas"</ul>
+<ul> <b> Trigger "tr_insert_stock_cepas" </b> </ul>
 <li>Descripción: Registra en la tabla espejo STOCK_CEPAS_AUDITORIA toda nueva inserción realizada en STOCK_CEPAS.</li>
 
 <li>Objetivo: Mantener un historial de las cepas ingresadas en stock, junto con usuario, fecha y detalle de la acción.</li>
 
 <li>Tablas que usa: "STOCK_CEPAS" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo luego de la insercion de datos</li>
 
-<ul>Trigger "tr_delete_stock_cepas"</ul>
+<ul> <b> Trigger "tr_delete_stock_cepas" </b> </ul>
 <li>Descripción: Registra en la tabla espejo STOCK_CEPAS_AUDITORIA los datos de una cepa de stock antes de ser eliminada.</li>
 
 <li>Objetivo: Garantizar que antes de una eliminacion se tenga un registro de los datos que fueron eliminados para evitar pérdida de información relevante.</li>
 
 <li>Tablas que usa: "STOCK_CEPAS" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de la eliminación de datos</li>
 
-<ul>Trigger "tr_insert_cepa_reserva"</ul>
+<ul> <b> Trigger "tr_insert_cepa_reserva" </b> </ul>
 <li>Descripción: Inserta en CEPA_RESERVA_AUDITORIA un registro con los datos de cada nueva reserva creada con usuario, fecha y detalle de la acción.</li>
 
 <li>Objetivo: Mantener un historial de las cepas ingresadas en reserva, junto con usuario, fecha y detalle de la acción.</li>
 
 <li>Tablas que usa: "CEPA_RESERVA" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo despues de la inserción de los datos.</li>
 
-<ul>Trigger "tr_delete_cepa_reserva"</ul>
+<ul> <b> Trigger "tr_delete_cepa_reserva" </b> </ul>
 <li>Descripción: Registra en la tabla espejo CEPA_RESERVA_AUDITORIA los datos de una cepa de stock antes de ser eliminada.</li>
 
 <li>Objetivo: Garantizar que antes de una eliminacion se tenga un registro de los datos que fueron eliminados para evitar pérdida de información relevante para fines de auditoria y control.</li>
 
 <li>Tablas que usa: "CEPA_RESERVA" y realiza una accion de BEFORE DELETE para que quede registrado en la tabla espejo antes de la eliminación de datos</li>
 
-<ul>Trigger "tr_insert_cepa_trabajo"</ul>
+<ul> <b> Trigger "tr_insert_cepa_trabajo" </b> </ul>
 <li>Descripción: Registra en la tabla espejo CEPA_TRABAJO_AUDITORIA los datos de una nueva cepa de trabajo al momento de ser creada, con usuario, fecha y acción.</li>
 
 <li>Objetivo: Mantener un historial de las cepas ingresadas en trabajo, junto con usuario, fecha y detalle de la acción necesaria para cumplir con la normativa vigente.</li>
 
 <li>Tablas que usa: "CEPA_TRABAJO" y realiza una accion de AFTER INSERT para que quede registrado en la tabla espejo luego de ser insertada.</li>
 
-<ul>Trigger "tr_delete_cepa_trabajo"</ul>
+<ul> <b> Trigger "tr_delete_cepa_trabajo" </b> </ul>
 <li>Descripción: Guarda en CEPA_TRABAJO_AUDITORIA los datos de una cepa de trabajo antes de que sea eliminada.</li>
 
 <li>Objetivo: Mantener un historial de las cepas eliminadas en trabajo, junto con usuario, fecha y detalle de la acción necesaria para cumplir con la normativa vigente como asi tambien Evitar pérdida de información y proporcionar trazabilidad completa de los registros eliminados.</li>
