@@ -16,7 +16,14 @@
 - [Listado de Store procedures](#Listado-de-Store-procedures)
 - [Listado de triggers](#Listado-de-triggers)
 - [Listado de Transacciones](#Listado-de-Transacciones)
-- [Listado de tablas de hecho](#Listado-de-tablas-de-hecho)
+- [Ver script creacion de tablas](./create_table.sql)
+- [Ver script insercion de datos](./insert_date.sql)
+- [Ver script vistas](./Views.sql)
+- [Ver script funciones](./Funciones().sql)
+- [Ver script Store procedures](./store_procedures.sql)
+- [Ver script triggers](./triggers.sql)
+- [Ver script Transacciones](./Transacciones.sql)
+
 
 ---
 
@@ -619,5 +626,3 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 <li>Objetivo: crear dos inserciones en la tabla ESTERILIZACION, lo que se busco es ver el correcto funcionamiento del ROLLBACK sin aclarar a que punto queremos volver y ver que borre todas las inserciones.</li>
 
 <li>Tablas que usa: "ESTERILIZACION".</li>
-
-<h2>Listado de tablas de hecho</h2>
