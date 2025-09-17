@@ -55,47 +55,53 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 | Nombre Campo     | Tipo de dato                    | Tipo de clave   |
 | ---------------- | ------------------------------- | --------------- |
-| MOO_ID           | INT, auto_incremental           |  PRIMARY KEY    |
+| MOO_ID           | INT, auto_incremental           |  PK             |
 | NOMBRE           | VARCHAR(100), UNIQUE, NOT NULL  |                 |
 
 <li>Relaciones (CEPAS 1:n SOTCK_CEPAS):</li>
 
 MOO_ID Usado como clave foránea en: STOCK_CEPAS.
 <br>
-<ul>2. TABLA ANALISTA_FIRMA </ul>
+<ul> <b> 2. TABLA ANALISTA_FIRMA </b> </ul>
 <li>Descripción: Registro de los analistas autorizados para intervenir sobre las cepas.</li>
 
 <li>Campos: </li>
+<br>
 
-ID_ANALISTA (INT, auto_incremental, PRIMARY KEY). Clave primaria.
-
-NOMBRE (VARCHAR(100), UNIQUE, NOT NULL). Iniciales de los analistas.
-
+| Nombre Campo     | Tipo de dato                    | Tipo de clave   |
+| ---------------- | ------------------------------- | --------------- |
+| ID_ANALISTA      | INT, auto_incremental           |  PK             |
+| NOMBRE           | VARCHAR(100), UNIQUE, NOT NULL  |                 |
+ 
 <li>Relaciones (ANALISTA_FIRMA 1:n con STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO): </li>
 
 ID_ANALISTA Usado como clave foránea en: STOCK_CEPAS, CEPA_RESERVA, CEPA_TRABAJO.
 
-<ul> 3. TABLA OBSERVAC_RESERVA</ul>
+<ul> <b> 3. TABLA OBSERVAC_RESERVA </b> </ul>
 <li>Descripción: Observaciones posibles luego de la reactivacion de cepa.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_OBSERVACION (INT, AUTO_INCREMENT, NOT NULL, PRIMARY KEY). Clave primaria
-
-DESCRIPCION (VARCHAR(255), UNIQUE, NOT NULL). Descripcion de posibles causas predeterminadas
-
+| Nombre Campo     | Tipo de dato                    | Tipo de clave   |
+| ---------------- | ------------------------------- | --------------- |
+| ID_OBSERVACION   | INT, AUTO_INCREMENT, NOT NULL   |  PK             |
+| DESCRIPCION      | VARCHAR(255), UNIQUE, NOT NULL  |                 |
+  
 <li>Relaciones (OBSERVAC_RESERVA 1:n CEPA_RESERVA):</li>
 
 ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
 
-<ul> 4. TABLA PRUEBAS_CEPAS </ul>
+<ul> <b> 4. TABLA PRUEBAS_CEPAS </b> </ul>
 <li>Descripción: Contiene los distintos tipos de pruebas bioquímicas posibles.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_PRUEBAS (INT, AUTO_INCREMENT, NOT NULL, PRIMARY KEY). Clave primaria.
-
-TIPOS (VARCHAR(200), NOT NULL, UNIQUE). tipos de puebas de calidad que existen.
+| Nombre Campo     | Tipo de dato                    | Tipo de clave   |
+| ---------------- | ------------------------------- | --------------- |
+| ID_PRUEBAS       | INT, AUTO_INCREMENT, NOT NULL   |  PK             |
+| TIPOS            | VARCHAR(200), NOT NULL, UNIQUE  |                 |
 
 <li>Relaciones (PRUEBAS_CEPAS 1:n STOCK_CEPAS, CEPA_TRABAJO):</li>
 
