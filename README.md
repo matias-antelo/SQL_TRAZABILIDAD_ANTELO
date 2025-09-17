@@ -317,7 +317,7 @@ ID_CICLO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
 <h2>Listado de Vistas</h2>
 
-<ul>VISTA "CEPAS_RECONSTITUIDAS"</ul>
+<ul> <b> VISTA "CEPAS_RECONSTITUIDAS" </b> </ul>
 
 <li>Descripción:
 Esta vista muestra todas las cepas que fueron reconstituídas en stock. Dicha tabla incluye el dato de la cepa, su numeracion, fechas de recepción y vencimiento, fecha de reconstitución, resultado, observaciones y analista responsable.</li>
