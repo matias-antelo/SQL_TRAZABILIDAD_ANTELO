@@ -9,7 +9,7 @@
 - [Objetivos](#Objetivos)
 - [Situación Problemática](#Situación-Problematica)
 - [Modelo de Negocios](#Modelo-de-Negocios)
-- [Diagrama Entidad Relación (DER)](#Diagrama-Entidad-Relación-(DER))
+- [Diagrama Entidad Relación](#Diagrama-Entidad-Relación)
 - [Listado de Tablas](#Listado-de-Tablas)
 - [Listado de Vistas](#Listado-de-vistas)
 - [Listado de funciones](#Listado-de-funciones)
@@ -44,7 +44,7 @@ La implementación de esta base de datos soluciona estos problemas ya que no ser
 Dicha propuesta no solo sirve para control de stock, sino que también te permite demostrar la trazabilidad para cumplir con las normativas de los organismos oficiales como ANMAT, SENASA, INAL, entre otros.
 </p>
 
-<h2>Diagrama Entidad Relación (DER)</h2>
+<h2>Diagrama Entidad Relación</h2>
 
 <img src="FOTO/Diagrama entidad Relacion (DER).jpg" alt="DER" width="1200"/>
 
