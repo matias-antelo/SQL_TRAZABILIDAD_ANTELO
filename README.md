@@ -109,89 +109,82 @@ ID_OBSERVACION Usado como clave foránea en: CEPA_RESERVA.
 
 ID_PRUEBAS Usado como clave foránea en: STOCK_CEPAS, CEPA_TRABAJO.
 
-<ul>5. TABLA OBSERVACION_TRABAJO</ul>
+<ul> <b> 5. TABLA OBSERVACION_TRABAJO </b> </ul>
 <li>Descripción: Observaciones predefinidas al uso o baja de cepas.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_OBSERVACIONTRABAJO (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY). Clave primaria.
-
-DESCRIPCION (VARCHAR (200), NOT NULL, UNIQUE). descripcion de aceptacion o no.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_OBSERVACIONTRABAJO  | INT, NOT NULL, AUTO_INCREMENT   |  PK             |
+| DESCRIPCION            | VARCHAR (200), NOT NULL, UNIQUE |                 |
 
 <li>Relaciones (OBSERVACION_TRABAJO 1:n CEPA_TRABAJO):</li>
 
 ID_OBSERVACIONTRABAJO Usado como clave foránea en: CEPA_TRABAJO.
 
-<ul>6. TABLA STOCK_CEPAS</ul>
+<ul> <b> 6. TABLA STOCK_CEPAS </b> </ul>
 <li>Descripción: Tabla principal que registra la incorporación y datos principales de una cepa en stock.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_STOCK (INT, AUTO_INCREMENT, PRIMARY KEY). Clave primaria.
-
-NUMERACION (INT, NOT NULL). corresponde a la numeracion para el control de stock
-
-FECHA_RECEPCION, FECHA_VTO, FECHA_RECONSTITUCION (DATE, NOT NULL)
-
-ID_PRUEBAS (INT) Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO, OBSERVACIONES (VARCHAR(500))
-
-ID_ANALISTA (INT) Clave foránea a ANALISTA_FIRMA.
-
-MOO_ID (INT) Clave foránea a CEPAS.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_STOCK               | INT, AUTO_INCREMENT             |  PK             |
+| NUMERACION             | INT, NOT NULL                   |                 |
+| FECHA_RECEPCION        | DATE, NOT NULL                  |                 |
+| FECHA_VTO              | DATE, NOT NULL                  |                 |
+| FECHA_RECONSTITUCION   | DATE, NOT NULL                  |                 |
+| ID_PRUEBAS             | INT                             |  FK             |
+| RESULTADO              | VARCHAR(500)                    |                 |
+| OBSERVACIONES          | VARCHAR(500)                    |                 |
+| ID_ANALISTA            | INT                             |  FK             |
+| MOO_ID                 | INT                             |  FK             |
 
 <li>Relaciones (STOCK_CEPAS 1:n CEPA_RESERVA; STOCK_CEPAS n:1 ANALISTA_FIRMA; STOCK_CEPAS n:1 CEPAS; STOCK_CEPAS n:1 PRUEBAS_CEPAS):</li>
 
 ID_STOCK Usado como clave foránea en: CEPA_RESERVA.
 
-
-<ul>7. CEPA_RESERVA</ul>
+<ul> <b> 7. CEPA_RESERVA </b> </ul>
 <li>Descripción: Tabla que registra las alícuotas reservadas desde el stock.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_RESERVA (INT, AUTO_INCREMENT, PRIMARY KEY). Clave primaria
-
-ID_STOCK (VARCHAR(50), NOT NULL). Clave foránea a STOCK_CEPAS.
-
-NUMERO_ALICUOTA (VARCHAR (10), NOT NULL). Cantidad de alicuotas generadas por cada cepa de reserva
-
-FECHA_RECONSTITUCION (DATE).
-
-ID_OBSERVACION (INT). Clave foránea a OBSERVAC_RESERVA.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_RESERVA             | INT, AUTO_INCREMENT             |  PK             |
+| ID_STOCK               | INT, NOT NULL                   |  FK             |
+| NUMERO_ALICUOTA        | VARCHAR (10), NOT NULL          |                 |
+| FECHA_RECONSTITUCION   | DATE                            |                 |
+| ID_OBSERVACION         | INT                             |  FK             |
+| ID_ANALISTA            | INT                             |  FK             |
 
 <li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_RESERVA n:1 ANALISTA_FIRMA; CEPA_RESERVA n:1 OBSERVAC_RESERVA; CEPA_RESERVA n:1 STOCK_CEPAS):</li>
 
 ID_RESERVA Usado como clave foránea en: CEPA_TRABAJO.
 
-
-<ul>8. CEPA_TRABAJO</ul>
+<ul> <b> 8. CEPA_TRABAJO </b> </ul>
 <li>Descripción: Segunda etapa de uso de una cepa, derivada de reserva.</li>
 
 <li>Campos:</li>
+<br>
 
-ID_TRABAJO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria
-
-NIVEL (INT, NOT NULL). Representa el nivel de pasaje de la cepa
-
-ID_RESERVA_ORIGEN (INT). Clave foránea a CEPA_RESERVA.
-
-ID_TRABAJO_ORIGEN (INT). 
-
-FECHA_ACTIVACION, FECHA_BAJA (DATE, NOT NULL). 
-
-ID_PRUEBAS (INT). Clave foránea a PRUEBAS_CEPAS.
-
-RESULTADO (VARCHAR(500)).
-
-ID_OBSERVACIONTRABAJO (INT). Clave foránea a OBSERVACION_TRABAJO.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
-
-ID_PREPARACION INT NULL. Clave foránea a PREPARACION_MEDIO_CULTIVO.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_TRABAJO             | INT, AUTO_INCREMENT             |  PK             |
+| NIVEL                  | INT, NOT NULL                   |                 |
+| ID_RESERVA_ORIGEN      | INT                             |  FK             | 
+| ID_TRABAJO_ORIGEN      | INT                             |  FK             |
+| FECHA_ACTIVACION       | DATE, NOT NULL                  |                 |
+| FECHA_BAJA             | DATE, NOT NULL                  |                 |
+| ID_PRUEBAS             | INT                             |  FK             |
+| RESULTADO              | VARCHAR(500)                    |  FK             |
+| ID_OBSERVACIONTRABAJO  | INT                             |  FK             |
+| ID_ANALISTA            | INT                             |  FK             |
+| ID_PREPARACION         | INT                             |  FK             |
 
 <li>Relaciones (CEPA_RESERVA 1:1 CEPA_TRABAJO; CEPA_TRABAJO 1:1 CEPA_TRABAJO; CEPA_TRABAJO n:1 ANALISTA_FIRMA; CEPA_TRABAJO n:1 ID_OBSERVACIONTRABAJO; CEPA_TRABAJO n:1 PRUEBAS_CEPAS; PREPARACION_MEDIO_CULTIVO 1:n CEPA_TRABAJO):</li>
 
@@ -199,133 +192,126 @@ ID_TRABAJO_ORIGEN Usado como clave foránea recursiva en: CEPA_TRABAJO.
 
 SE MODIFICA LA TABLA ORIGINAL PARA AGREGARLE EL CAMPO PREPARACION_MEDIO_CULTIVO Y SU RELACION.
 
-<ul>9. MEDIO_CULTIVO_STOCK</ul>
+<ul> <b> 9. MEDIO_CULTIVO_STOCK </b> </ul>
 <li>Descripción: Registro del stock de medios de cultivo disponibles en el laboratorio.</li> 
 
 <li>Campos:</li>
+<br>
 
-ID_MEDIO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-NOMBRE (VARCHAR(100), NOT NULL). Nombre del medio de cultivo.
-
-FABRICANTE (VARCHAR(100)). Fabricante del medio.
-
-LOTE (VARCHAR(50)). Número de lote del medio.
-
-VENCIMIENTO (DATE). Fecha de vencimiento del medio.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_MEDIO               | INT, AUTO_INCREMENT             |  PK             |
+| NOMBRE                 | VARCHAR(100), NOT NULL          |                 |
+| FABRICANTE             | VARCHAR(100)                    |                 | 
+| LOTE                   | VARCHAR(50)                     |                 |
+| VENCIMIENTO            | DATE                            |                 |
 
 <li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 MEDIO_CULTIVO_STOCK): </li>
 
 ID_MEDIO usado como clave forane en: PREPARACION_MEDIO_CULTIVO.
 
-<ul>10. ECOMETRICO</ul> 
+<ul> <b> 10. ECOMETRICO </b> </ul> 
 <li>Descripción: Tabla de control ecométrico de los medios de cultivo para validar la calidad microbiológica.</li>
 <li>Campos:</li>
+<br>
 
-ID_ECOMETRICO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-FECHA (DATE, NOT NULL). Fecha del control ecométrico.
-
-ICA (INT, NOT NULL). Índice de control.
-
-ICE (INT, NOT NULL). Índice de control.
-
-RESULTADO (VARCHAR(100), NOT NULL). Resultado del control.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_ECOMETRICO          | INT, AUTO_INCREMENT             |  PK             |
+| FECHA                  | DATE, NOT NULL                  |                 |
+| ICA                    | INT, NOT NULL                   |                 | 
+| ICE                    | INT, NOT NULL                   |                 |
+| RESULTADO              | VARCHAR(100), NOT NULL          |                 |
 
 <li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 ECOMETRICO):</li>
 ID_ECOMETRICO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
-<ul>11. AGUA_DEST</ul>
+<br>
+<ul> <b> 11. AGUA_DEST </b> </ul>
 <li>Descripción: Registro para control del agua destilada utilizada en la preparación de medios de cultivo.</li>
 <li>Campos:</li>
+<br>
 
-ID_AGUA (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-FECHA_ENTRADA (DATE, NOT NULL). Fecha de control del agua destilada.
-
-CONTROL (VARCHAR(100)). Resultado del control de calidad del agua.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_AGUA                | INT, AUTO_INCREMENT             |  PK             |
+| FECHA_ENTRADA          | DATE, NOT NULL                  |                 |
+| CONTROL                | VARCHAR(100)                    |                 | 
+| ID_ANALISTA            | INT                             |  FK             |
 
 <li>Relaciones (AGUA_DEST n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 AGUA_DEST): </li>
 ID_AGUA usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
-<ul>12. PREPARACION_MEDIO_CULTIVO</ul>
+<br>
+<ul> <b> 12. PREPARACION_MEDIO_CULTIVO </b> </ul>
 <li>Descripción: Registro de la preparación de medios de cultivo en el laboratorio.</li>
 <li>Campos:</li>
+<br>
 
-ID_PREPARACION (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-ID_MEDIO (INT, NOT NULL). Clave foránea a MEDIO_CULTIVO_STOCK.
-
-FECHA_PREPARACION (DATE, NOT NULL). Fecha de preparación del medio.
-
-ID_ECOMETRICO (INT). Clave foránea a ECOMETRICO.
-
-ID_AGUA (INT). Clave foránea a AGUA_DEST.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
-
-PH (INT). Valor de pH medido en la preparación.
-
-OBSERVACIONES (VARCHAR(500)). Observaciones generales.
-
-ID_CICLO (INT). Clave foránea a ESTERILIZACION.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_PREPARACION         | INT, AUTO_INCREMENT             |  PK             |
+| ID_MEDIO               | INT, NOT NULL                   |  FK             |
+| FECHA_PREPARACION      | DATE, NOT NULL                  |                 | 
+| ID_ECOMETRICO          | INT                             |  FK             |
+| ID_AGUA                | INT                             |  FK             |
+| ID_ANALISTA            | INT                             |  FK             |
+| PH                     | INT                             |                 |
+| OBSERVACIONES          | VARCHAR(500)                    |                 |
+| ID_CICLO               | INT                             |  FK             |
 
 <li>Relaciones (PREPARACION_MEDIO_CULTIVO n:1 MEDIO_CULTIVO_STOCK, PREPARACION_MEDIO_CULTIVO n:1 ECOMETRICO, PREPARACION_MEDIO_CULTIVO n:1 AGUA_DEST, PREPARACION_MEDIO_CULTIVO n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 ESTERILIZACION, CEPA_TRABAJO n:1 PREPARACION_MEDIO_CULTIVO):</li>
 ID_PREPARACION usado como clave foranea en: CEPA_TRABAJO.
 
-<ul>13. EQUIPOS</ul>
+<br>
+<ul> <b> 13. EQUIPOS </b> </ul>
 <li>Descripción: Registro de los equipos del laboratorio y su control.</li>
 <li>Campos:</li>
+<br>
 
-ID_EQUIPO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-MARCA (VARCHAR(100)). Marca del equipo.
-
-FECHA_CALIBRACION (DATE). Fecha de última calibración.
-
-VTO_CALIBRACION (DATE). Fecha de vencimiento de la calibración.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_EQUIPO              | INT, AUTO_INCREMENT             |  PK             |
+| MARCA                  | VARCHAR(100)                    |                 |
+| FECHA_CALIBRACION      | DATE                            |                 | 
+| VTO_CALIBRACION        | DATE                            |                 |
 
 <li>Relaciones (ESTERILIZACION n:1 EQUIPOS, AUTOCLAVE_VERIF n:1 EQUIPOS):</li>
 ID_EQUIPO usado como clave foranea en: ESTERILIZACION y AUTOCLAVE_VERIF.
 
-<ul>14. ESTERILIZACION</ul>
+<br>
+<ul> <b> 14. ESTERILIZACION </b> </ul>
 <li>Descripción: Registro de los ciclos de esterilización realizados en autoclaves.</li>
 <li>Campos:</li>
+<br>
 
-ID_CICLO (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-ID_EQUIPO (INT, NOT NULL). Clave foránea a EQUIPOS.
-
-FECHA (DATE, NOT NULL). Fecha del ciclo de esterilización.
-
-TIEMPO (INT). Tiempo del ciclo en minutos.
-
-TEMPERATURA (INT). Temperatura alcanzada.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_CICLO               | INT, AUTO_INCREMENT             |  PK             |
+| ID_EQUIPO              | INT, NOT NULL                   |  FK             |
+| FECHA                  | DATE, NOT NULL                  |                 | 
+| TIEMPO                 | INT                             |                 |
+| TEMPERATURA            | INT                             |                 | 
+| ID_ANALISTA            | INT                             |  FK             |
 
 <li>Relaciones (ESTERILIZACION n:1 EQUIPOS, ESTERILIZACION n:1 ANALISTA_FIRMA, PREPARACION_MEDIO_CULTIVO n:1 ESTERILIZACION):</li>
 ID_CICLO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
-<ul>15. AUTOCLAVE_VERIF</ul>
+<br>
+<ul> <b> 15. AUTOCLAVE_VERIF </b> </ul>
 <li>Descripción: Registro de la verificación de los autoclaves como control de calidad.</li>
 <li>Campos:</li>
+<br>
 
-ID_AUTOCLAVE (INT, PRIMARY KEY, AUTO_INCREMENT). Clave primaria.
-
-ID_EQUIPO (INT, NOT NULL). Clave foránea a EQUIPOS.
-
-FECHA (DATE, NOT NULL). Fecha de la verificación.
-
-LECTURA_1 (DECIMAL(8,3)). Lectura 1 registrada.
-
-LECTURA_2 (DECIMAL(8,3)). Lectura 2 registrada.
-
-CUMPLE (BOOLEAN). Indica si el autoclave cumple con las condiciones establecidas.
-
-ID_ANALISTA (INT). Clave foránea a ANALISTA_FIRMA.
+| Nombre Campo           | Tipo de dato                    | Tipo de clave   |
+| ---------------------- | ------------------------------- | --------------- |
+| ID_AUTOCLAVE           | INT, AUTO_INCREMENT             |  PK             |
+| ID_EQUIPO              | INT, NOT NULL                   |  FK             |
+| FECHA                  | DATE, NOT NULL                  |                 | 
+| LECTURA_1              | DECIMAL(8,3)                    |                 |
+| LECTURA_2              | DECIMAL(8,3)                    |                 | 
+| CUMPLE                 | BOOLEAN                         |                 |
+| ID_ANALISTA            | INT                             |  FK             |
 
 <li>Relaciones (AUTOCLAVE_VERIF n:1 EQUIPOS, AUTOCLAVE_VERIF n:1 ANALISTA_FIRMA):</li>
 
