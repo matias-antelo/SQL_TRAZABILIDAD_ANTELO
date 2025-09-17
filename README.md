@@ -47,12 +47,11 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 
 <h2>Listado de Tablas</h2>
-<ul> <b> 1. TABLA CEPAS </b></ul>
+<ul> <b> 1. TABLA CEPAS </b> </ul>
 <li>Descripción: Tabla base que contiene los microorganismos disponibles.</li>
 
 <li>Campos:</li>
-
-
+<br>
 | Nombre Campo     | Tipo de dato                    | Tipo de clave   |
 | ---------------- | ------------------------------- | --------------- |
 | MOO_ID           | INT, auto_incremental           |  PRIMARY KEY    |
@@ -61,7 +60,7 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 <li>Relaciones (CEPAS 1:n SOTCK_CEPAS):</li>
 
 MOO_ID Usado como clave foránea en: STOCK_CEPAS.
-
+<br>
 <ul>2. TABLA ANALISTA_FIRMA </ul>
 <li>Descripción: Registro de los analistas autorizados para intervenir sobre las cepas.</li>
 
