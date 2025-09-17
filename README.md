@@ -54,10 +54,6 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 | MOO_ID           | INT, auto_incremental           |  PRIMARY KEY    |
 | NOMBRE           | VARCHAR(100), UNIQUE, NOT NULL  |                 |
 
-MOO_ID (INT, auto_incremental, PRIMARY KEY). Clave primaria.
-
-NOMBRE (VARCHAR(100), UNIQUE, NOT NULL). Nombre de la cepa.
-
 <li>Relaciones (CEPAS 1:n SOTCK_CEPAS):</li>
 
 MOO_ID Usado como clave foránea en: STOCK_CEPAS.
