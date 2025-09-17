@@ -52,6 +52,7 @@ Dicha propuesta no solo sirve para control de stock, sino que también te permit
 
 <li>Campos:</li>
 <br>
+
 | Nombre Campo     | Tipo de dato                    | Tipo de clave   |
 | ---------------- | ------------------------------- | --------------- |
 | MOO_ID           | INT, auto_incremental           |  PRIMARY KEY    |
