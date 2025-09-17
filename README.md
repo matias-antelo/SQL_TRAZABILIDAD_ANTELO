@@ -227,6 +227,7 @@ ID_MEDIO usado como clave forane en: PREPARACION_MEDIO_CULTIVO.
 ID_ECOMETRICO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
 <br>
+
 <ul> <b> 11. AGUA_DEST </b> </ul>
 <li>Descripción: Registro para control del agua destilada utilizada en la preparación de medios de cultivo.</li>
 <li>Campos:</li>
@@ -243,6 +244,7 @@ ID_ECOMETRICO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 ID_AGUA usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
 <br>
+
 <ul> <b> 12. PREPARACION_MEDIO_CULTIVO </b> </ul>
 <li>Descripción: Registro de la preparación de medios de cultivo en el laboratorio.</li>
 <li>Campos:</li>
@@ -264,6 +266,7 @@ ID_AGUA usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 ID_PREPARACION usado como clave foranea en: CEPA_TRABAJO.
 
 <br>
+
 <ul> <b> 13. EQUIPOS </b> </ul>
 <li>Descripción: Registro de los equipos del laboratorio y su control.</li>
 <li>Campos:</li>
@@ -280,6 +283,7 @@ ID_PREPARACION usado como clave foranea en: CEPA_TRABAJO.
 ID_EQUIPO usado como clave foranea en: ESTERILIZACION y AUTOCLAVE_VERIF.
 
 <br>
+
 <ul> <b> 14. ESTERILIZACION </b> </ul>
 <li>Descripción: Registro de los ciclos de esterilización realizados en autoclaves.</li>
 <li>Campos:</li>
@@ -298,6 +302,7 @@ ID_EQUIPO usado como clave foranea en: ESTERILIZACION y AUTOCLAVE_VERIF.
 ID_CICLO usado como clave foranea en: PREPARACION_MEDIO_CULTIVO.
 
 <br>
+
 <ul> <b> 15. AUTOCLAVE_VERIF </b> </ul>
 <li>Descripción: Registro de la verificación de los autoclaves como control de calidad.</li>
 <li>Campos:</li>
