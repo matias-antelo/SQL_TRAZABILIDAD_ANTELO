@@ -16,7 +16,7 @@
 - [Listado de Store procedures](#Listado-de-Store-procedures)
 - [Listado de triggers](#Listado-de-triggers)
 - [Listado de Transacciones](#Listado-de-Transacciones)
-- [Informe generado de la vista cepas_reconstituidas](#Informe-generado-de-la-vista-cepas-reconstituidas)
+- [Informe generado de la vista cepas reconstituidas](#Informe-generado-de-la-vista-cepas-reconstituidas)
 - [Ver script creacion de tablas](./create_table.sql)
 - [Ver script insercion de datos](./insert_date.sql)
 - [Ver script vistas](./Views.sql)
@@ -628,5 +628,6 @@ Facilita la eliminación segura de pruebas evitando errores de eliminar registro
 
 <li>Tablas que usa: "ESTERILIZACION".</li>
 
-<h2> Informe generado de la vista cepas_reconstituidas </h2>
+<h2>Informe generado de la vista cepas reconstituidas</h2>
+
 <img src="FOTO/Informe vista cepas_reconstituidas.jpg" alt="Informe cepas" width="1200"/>
