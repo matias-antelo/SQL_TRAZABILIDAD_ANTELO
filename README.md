@@ -24,6 +24,7 @@
 - [Ver script Store procedures](./store_procedures.sql)
 - [Ver script triggers](./triggers.sql)
 - [Ver script Transacciones](./Transacciones.sql)
+- [Ver script Casos de prueba](./Casos_prueba.sql)
 
 
 ---
