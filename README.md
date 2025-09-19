@@ -25,6 +25,7 @@
 - [Ver script triggers](./triggers.sql)
 - [Ver script Transacciones](./Transacciones.sql)
 - [Ver script Casos de prueba](./Casos_prueba.sql)
+- [Ver script Backup](./Backup.sql)
 
 
 ---
